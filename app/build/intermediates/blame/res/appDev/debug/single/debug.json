@@ -1484,10 +1484,6 @@
         "source": "/Users/Guest/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/31d74d7f196d2154560a584d962dede1/res/color-v23/abc_tint_default.xml"
     },
     {
-        "merged": "/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/res/merged/appDev/debug/layout_fragment_open_source.xml.flat",
-        "source": "/Users/Guest/Desktop/AndroidWeather/app/src/main/res/layout/fragment_open_source.xml"
-    },
-    {
         "merged": "/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/res/merged/appDev/debug/drawable-hdpi-v4_abc_ic_star_black_48dp.png.flat",
         "source": "/Users/Guest/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/31d74d7f196d2154560a584d962dede1/res/drawable-hdpi-v4/abc_ic_star_black_48dp.png"
     },

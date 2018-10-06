@@ -110,11 +110,11 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     protected void setUp() {
-        setupCardContainerView();
+        setupWeatherListContainerView();
         mPresenter.onViewInitialized();
     }
 
-    private void setupCardContainerView() {
+    private void setupWeatherListContainerView() {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container, WeatherListFragment.newInstance())

@@ -1,22 +1,17 @@
 package com.weather.isaiahj.androidweather.ui.main.weatherlist;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.weather.isaiahj.androidweather.R;
 import com.weather.isaiahj.androidweather.data.network.model.BulkCurrentWeather;
+import com.weather.isaiahj.androidweather.data.network.model.currentweather.CurrentWeather;
 import com.weather.isaiahj.androidweather.ui.base.BaseViewHolder;
 import com.weather.isaiahj.androidweather.utils.AppLogger;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,7 +19,7 @@ import butterknife.OnClick;
 import io.reactivex.annotations.Nullable;
 
 /**
- * Created by Janisharali on 25-05-2017.
+ * Created by isaiahj on 07-10-2018.
  */
 
 public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
@@ -76,30 +71,23 @@ public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     }
 
     public interface Callback {
+        void onWeatherListItemClick(CurrentWeather currentWeather);
         void onWeatherListEmptyViewRetryClick();
     }
 
     public class ViewHolder extends BaseViewHolder {
 
         @Nullable
-        @BindView(R.id.cover_image_view)
-        ImageView coverImageView;
+        @BindView(R.id.location_text_view)
+        TextView locationTextView;
 
         @Nullable
-        @BindView(R.id.title_text_view)
-        TextView titleTextView;
+        @BindView(R.id.weather_text_view)
+        TextView weatherTextView;
 
         @Nullable
-        @BindView(R.id.author_text_view)
-        TextView authorTextView;
-
-        @Nullable
-        @BindView(R.id.date_text_view)
-        TextView dateTextView;
-
-        @Nullable
-        @BindView(R.id.content_text_view)
-        TextView contentTextView;
+        @BindView(R.id.temperature_text_view)
+        TextView temperatureTextView;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -107,56 +95,39 @@ public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         }
 
         protected void clear() {
-            if (coverImageView != null) coverImageView.setImageDrawable(null);
-            if (titleTextView != null) titleTextView.setText("");
-            if (contentTextView != null) contentTextView.setText("");
+            if (locationTextView != null) locationTextView.setText("");
+            if (weatherTextView != null) weatherTextView.setText("");
+            if (temperatureTextView != null) temperatureTextView.setText("");
+            if (itemView != null) itemView.setOnClickListener(null);
         }
 
         public void onBind(int position) {
             super.onBind(position);
 
-//            final WeatherListResponse.WeatherList WeatherList = mWeatherListResponseList.get(position);
-//
-//            if (WeatherList.getCoverImgUrl() != null) {
-//                Glide.with(itemView.getContext())
-//                        .load(WeatherList.getCoverImgUrl())
-//                        .asBitmap()
-//                        .centerCrop()
-//                        .into(coverImageView);
-//            }
-//
-//            if (WeatherList.getTitle() != null) {
-//                titleTextView.setText(WeatherList.getTitle());
-//            }
-//
-//            if (WeatherList.getAuthor() != null) {
-//                authorTextView.setText(WeatherList.getAuthor());
-//            }
-//
-//            if (WeatherList.getDate() != null) {
-//                dateTextView.setText(WeatherList.getDate());
-//            }
-//
-//            if (WeatherList.getDescription() != null) {
-//                contentTextView.setText(WeatherList.getDescription());
-//            }
-//
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    if (WeatherList.getWeatherListUrl() != null) {
-//                        try {
-//                            Intent intent = new Intent();
-//                            intent.setAction(Intent.ACTION_VIEW);
-//                            intent.addCategory(Intent.CATEGORY_BROWSABLE);
-//                            intent.setData(Uri.parse(WeatherList.getWeatherListUrl()));
-//                            itemView.getContext().startActivity(intent);
-//                        } catch (Exception e) {
-//                            AppLogger.d("url error");
-//                        }
-//                    }
-//                }
-//            });
+            try {
+
+                final CurrentWeather currentWeather = mBulkCurrentWeather.getList().get(position);
+
+                locationTextView.setText(String.format("%s, %s", currentWeather.getName(),
+                        currentWeather.getSys().getCountry()));
+
+                weatherTextView.setText(currentWeather.getWeather().get(0).getDescription());
+
+                temperatureTextView.setText(String.format("%s \u00B0C",
+                        currentWeather.getMain().getTemp()));
+
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mCallback.onWeatherListItemClick(currentWeather);
+                    }
+                });
+
+            } catch (NullPointerException exception) {
+                AppLogger.d(exception.getMessage());
+                clear();
+            }
+
         }
     }
 

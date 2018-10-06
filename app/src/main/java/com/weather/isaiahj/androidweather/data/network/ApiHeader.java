@@ -31,9 +31,14 @@ public class ApiHeader {
         @SerializedName("APPID")
         private String mApiKey;
 
+        @Expose
+        @SerializedName("units")
+        private String mUnits;
+
         @Inject
         public PublicApiHeader(@ApiInfo String apiKey) {
             mApiKey = apiKey;
+            mUnits = "metric";
         }
     }
 }

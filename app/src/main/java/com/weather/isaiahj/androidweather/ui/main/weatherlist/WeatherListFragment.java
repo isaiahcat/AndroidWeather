@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.weather.isaiahj.androidweather.R;
 import com.weather.isaiahj.androidweather.data.network.model.BulkCurrentWeather;
+import com.weather.isaiahj.androidweather.data.network.model.currentweather.CurrentWeather;
 import com.weather.isaiahj.androidweather.di.component.ActivityComponent;
 import com.weather.isaiahj.androidweather.ui.base.BaseFragment;
 
@@ -73,6 +74,11 @@ public class WeatherListFragment extends BaseFragment implements
         mRecyclerView.setAdapter(mWeatherListAdapter);
 
         mPresenter.onViewPrepared();
+    }
+
+    @Override
+    public void onWeatherListItemClick(CurrentWeather currentWeather) {
+
     }
 
     @Override
