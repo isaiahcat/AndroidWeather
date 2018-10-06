@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:16:1-66:12
-INJECTED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:16:1-66:12
-INJECTED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:16:1-66:12
-INJECTED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:16:1-66:12
+ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:16:1-61:12
+INJECTED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:16:1-61:12
+INJECTED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:16:1-61:12
+INJECTED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:16:1-61:12
 MERGED from [com.amitshekhar.android:debug-db:1.0.3] /Users/Guest/.gradle/caches/transforms-1/files-1.1/debug-db-1.0.3.aar/af96a0e78bba2afe5653adb8272077ca/AndroidManifest.xml:20:1-40:12
 MERGED from [com.android.support:design:26.1.0] /Users/Guest/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/1e62dbfa5aab7be6c920a533439bfac3/AndroidManifest.xml:17:1-31:12
 MERGED from [uk.co.chrisjenx:calligraphy:2.2.0] /Users/Guest/.gradle/caches/transforms-1/files-1.1/calligraphy-2.2.0.aar/df50b223d0f0b535dd85f5fb812acd43/AndroidManifest.xml:2:1-13:12
@@ -31,20 +31,20 @@ MERGED from [com.android.support:support-core-utils:27.0.2] /Users/Guest/.gradle
 MERGED from [com.android.support:support-core-ui:27.0.2] /Users/Guest/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.2.aar/f12029b6bb5b8fbe5b7adfbf9908f179/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-compat:27.0.2] /Users/Guest/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/cc2a74209262bad722ab458caf6fcf92/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/Guest/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/510dfeba29f6b03c99a0815da0d98498/AndroidManifest.xml:17:1-24:12
-INJECTED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:16:1-66:12
-INJECTED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:16:1-66:12
-INJECTED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:16:1-66:12
+INJECTED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:16:1-61:12
+INJECTED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:16:1-61:12
+INJECTED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:16:1-61:12
 	package
 		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:17:5-49
 		INJECTED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml
-		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:16:1-66:12
+		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:16:1-61:12
 		INJECTED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml
-		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:16:1-66:12
+		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:16:1-61:12
 		INJECTED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:16:11-69
@@ -55,7 +55,7 @@ MERGED from [com.amitshekhar.android:debug-db:1.0.3] /Users/Guest/.gradle/caches
 	android:name
 		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:19:22-64
 application
-ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:21:5-64:19
+ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:21:5-59:19
 MERGED from [com.amitshekhar.android:debug-db:1.0.3] /Users/Guest/.gradle/caches/transforms-1/files-1.1/debug-db-1.0.3.aar/af96a0e78bba2afe5653adb8272077ca/AndroidManifest.xml:32:5-38:19
 MERGED from [com.amitshekhar.android:debug-db:1.0.3] /Users/Guest/.gradle/caches/transforms-1/files-1.1/debug-db-1.0.3.aar/af96a0e78bba2afe5653adb8272077ca/AndroidManifest.xml:32:5-38:19
 MERGED from [com.android.support:design:26.1.0] /Users/Guest/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/1e62dbfa5aab7be6c920a533439bfac3/AndroidManifest.xml:25:5-29:19
@@ -110,38 +110,30 @@ category#android.intent.category.LAUNCHER
 ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:38:17-77
 	android:name
 		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:38:27-74
-activity#com.weather.isaiahj.androidweather.ui.login.LoginActivity
+activity#com.weather.isaiahj.androidweather.ui.main.MainActivity
 ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:42:9-45:52
 	android:screenOrientation
 		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:45:13-49
 	android:launchMode
 		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:44:13-43
 	android:name
-		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:43:13-85
-activity#com.weather.isaiahj.androidweather.ui.main.MainActivity
-ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:47:9-50:52
+		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:43:13-83
+activity#com.weather.isaiahj.androidweather.ui.feed.FeedActivity
+ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:47:9-57:20
 	android:screenOrientation
-		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:50:13-49
+		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:51:13-49
+	android:parentActivityName
+		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:50:13-63
 	android:launchMode
 		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:49:13-43
 	android:name
 		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:48:13-83
-activity#com.weather.isaiahj.androidweather.ui.feed.FeedActivity
-ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:52:9-62:20
-	android:screenOrientation
-		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:56:13-49
-	android:parentActivityName
-		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:55:13-63
-	android:launchMode
-		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:54:13-43
-	android:name
-		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:53:13-83
 meta-data#android.support.PARENT_ACTIVITY
-ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:59:13-61:57
+ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:54:13-56:57
 	android:value
-		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:61:17-54
+		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:56:17-54
 	android:name
-		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:60:17-63
+		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:55:17-63
 uses-sdk
 INJECTED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml
