@@ -1,5 +1,6 @@
 package com.weather.isaiahj.androidweather.ui.main.weatherlist;
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,6 +79,10 @@ public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     public class ViewHolder extends BaseViewHolder {
 
         @Nullable
+        @BindView(R.id.card_view)
+        CardView cardView;
+
+        @Nullable
         @BindView(R.id.location_text_view)
         TextView locationTextView;
 
@@ -98,7 +103,7 @@ public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             if (locationTextView != null) locationTextView.setText("");
             if (weatherTextView != null) weatherTextView.setText("");
             if (temperatureTextView != null) temperatureTextView.setText("");
-            if (itemView != null) itemView.setOnClickListener(null);
+            if (cardView != null) cardView.setOnClickListener(null);
         }
 
         public void onBind(int position) {
@@ -116,7 +121,7 @@ public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 temperatureTextView.setText(String.format("%s \u00B0C",
                         currentWeather.getMain().getTemp()));
 
-                itemView.setOnClickListener(new View.OnClickListener() {
+                cardView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         mCallback.onWeatherListItemClick(currentWeather);

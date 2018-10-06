@@ -10,6 +10,7 @@ import android.view.animation.ScaleAnimation;
 
 import com.weather.isaiahj.androidweather.R;
 import com.weather.isaiahj.androidweather.data.db.model.Question;
+import com.weather.isaiahj.androidweather.data.network.model.currentweather.CurrentWeather;
 import com.weather.isaiahj.androidweather.ui.about.AboutFragment;
 import com.weather.isaiahj.androidweather.ui.base.BaseActivity;
 import com.weather.isaiahj.androidweather.ui.feed.FeedActivity;
@@ -122,7 +123,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     @Override
-    public void openWeatherDetailActivity() {
-        startActivity(FeedActivity.getStartIntent(this));
+    public void openWeatherDetailActivity(CurrentWeather currentWeather) {
+        startActivity(FeedActivity.getStartIntent(MainActivity.this));
     }
 }

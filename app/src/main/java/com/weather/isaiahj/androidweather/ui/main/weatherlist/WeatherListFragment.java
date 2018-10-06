@@ -14,6 +14,7 @@ import com.weather.isaiahj.androidweather.data.network.model.BulkCurrentWeather;
 import com.weather.isaiahj.androidweather.data.network.model.currentweather.CurrentWeather;
 import com.weather.isaiahj.androidweather.di.component.ActivityComponent;
 import com.weather.isaiahj.androidweather.ui.base.BaseFragment;
+import com.weather.isaiahj.androidweather.ui.main.MainActivity;
 
 import java.util.List;
 
@@ -30,6 +31,8 @@ public class WeatherListFragment extends BaseFragment implements
         WeatherListMvpView, WeatherListAdapter.Callback {
 
     private static final String TAG = "WeatherListFragment";
+
+    private MainActivity mMainActivity;
 
     @Inject
     WeatherListMvpPresenter<WeatherListMvpView> mPresenter;
@@ -62,6 +65,10 @@ public class WeatherListFragment extends BaseFragment implements
             setUnBinder(ButterKnife.bind(this, view));
             mPresenter.onAttach(this);
             mWeatherListAdapter.setCallback(this);
+
+            if (container != null && container.getContext() instanceof MainActivity) {
+                mMainActivity = (MainActivity) container.getContext();
+            }
         }
         return view;
     }
@@ -78,7 +85,9 @@ public class WeatherListFragment extends BaseFragment implements
 
     @Override
     public void onWeatherListItemClick(CurrentWeather currentWeather) {
-
+        if (mMainActivity != null) {
+            mMainActivity.openWeatherDetailActivity(currentWeather);
+        }
     }
 
     @Override
