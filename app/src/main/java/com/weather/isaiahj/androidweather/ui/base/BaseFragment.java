@@ -107,13 +107,6 @@ public abstract class BaseFragment extends Fragment implements MvpView {
         }
     }
 
-    @Override
-    public void openActivityOnTokenExpire() {
-        if (mActivity != null) {
-            mActivity.openActivityOnTokenExpire();
-        }
-    }
-
     public ActivityComponent getActivityComponent() {
         if (mActivity != null) {
             return mActivity.getActivityComponent();

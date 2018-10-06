@@ -21,7 +21,6 @@ import com.weather.isaiahj.androidweather.R;
 import com.weather.isaiahj.androidweather.di.component.ActivityComponent;
 import com.weather.isaiahj.androidweather.di.component.DaggerActivityComponent;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule;
-import com.weather.isaiahj.androidweather.ui.login.LoginActivity;
 import com.weather.isaiahj.androidweather.utils.CommonUtils;
 import com.weather.isaiahj.androidweather.utils.NetworkUtils;
 
@@ -146,12 +145,6 @@ public abstract class BaseActivity extends AppCompatActivity
                     getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
-    }
-
-    @Override
-    public void openActivityOnTokenExpire() {
-        startActivity(LoginActivity.getStartIntent(this));
-        finish();
     }
 
     public void setUnBinder(Unbinder unBinder) {

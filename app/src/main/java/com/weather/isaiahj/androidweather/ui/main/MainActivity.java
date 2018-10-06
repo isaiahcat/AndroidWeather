@@ -29,8 +29,6 @@ import com.weather.isaiahj.androidweather.ui.about.AboutFragment;
 import com.weather.isaiahj.androidweather.ui.base.BaseActivity;
 import com.weather.isaiahj.androidweather.ui.custom.RoundedImageView;
 import com.weather.isaiahj.androidweather.ui.feed.FeedActivity;
-import com.weather.isaiahj.androidweather.ui.login.LoginActivity;
-import com.weather.isaiahj.androidweather.ui.main.rating.RateUsDialog;
 import com.weather.isaiahj.androidweather.utils.ScreenUtils;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
@@ -298,41 +296,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         mProfileImageView = (RoundedImageView) headerLayout.findViewById(R.id.iv_profile_pic);
         mNameTextView = (TextView) headerLayout.findViewById(R.id.tv_name);
         mEmailTextView = (TextView) headerLayout.findViewById(R.id.tv_email);
-
-        mNavigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        mDrawer.closeDrawer(GravityCompat.START);
-                        switch (item.getItemId()) {
-                            case R.id.nav_item_about:
-                                mPresenter.onDrawerOptionAboutClick();
-                                return true;
-                            case R.id.nav_item_rate_us:
-                                mPresenter.onDrawerRateUsClick();
-                                return true;
-                            case R.id.nav_item_feed:
-                                mPresenter.onDrawerMyFeedClick();
-                                return true;
-                            case R.id.nav_item_logout:
-                                mPresenter.onDrawerOptionLogoutClick();
-                                return true;
-                            default:
-                                return false;
-                        }
-                    }
-                });
-    }
-
-    @Override
-    public void openLoginActivity() {
-        startActivity(LoginActivity.getStartIntent(this));
-        finish();
-    }
-
-    @Override
-    public void showRateUsDialog() {
-        RateUsDialog.newInstance().show(getSupportFragmentManager());
     }
 
     @Override

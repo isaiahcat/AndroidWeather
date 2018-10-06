@@ -53,7 +53,6 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
 
                         getDataManager().setUserAsLoggedOut();
                         getMvpView().hideLoading();
-                        getMvpView().openLoginActivity();
                     }
                 }, new Consumer<Throwable>() {
                     @Override
@@ -135,12 +134,6 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
         if (profilePicUrl != null && !profilePicUrl.isEmpty()) {
             getMvpView().updateUserProfilePic(profilePicUrl);
         }
-    }
-
-    @Override
-    public void onDrawerRateUsClick() {
-        getMvpView().closeNavigationDrawer();
-        getMvpView().showRateUsDialog();
     }
 
     @Override

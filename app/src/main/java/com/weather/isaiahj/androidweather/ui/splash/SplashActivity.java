@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import com.weather.isaiahj.androidweather.R;
 import com.weather.isaiahj.androidweather.ui.base.BaseActivity;
-import com.weather.isaiahj.androidweather.ui.login.LoginActivity;
 import com.weather.isaiahj.androidweather.ui.main.MainActivity;
 
 import javax.inject.Inject;
@@ -38,16 +37,6 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
         setUnBinder(ButterKnife.bind(this));
 
         mPresenter.onAttach(SplashActivity.this);
-    }
-
-    /**
-     * Making the screen wait so that the  branding can be shown
-     */
-    @Override
-    public void openLoginActivity() {
-        Intent intent = LoginActivity.getStartIntent(SplashActivity.this);
-        startActivity(intent);
-        finish();
     }
 
     @Override

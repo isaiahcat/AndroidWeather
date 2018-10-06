@@ -11,8 +11,6 @@ import java.util.List;
 
 public interface MainMvpView extends MvpView {
 
-    void openLoginActivity();
-
     void showAboutFragment();
 
     void refreshQuestionnaire(List<Question> questionList);
@@ -26,8 +24,6 @@ public interface MainMvpView extends MvpView {
     void updateUserProfilePic(String currentUserProfilePicUrl);
 
     void updateAppVersion();
-
-    void showRateUsDialog();
 
     void openMyFeedActivity();
 

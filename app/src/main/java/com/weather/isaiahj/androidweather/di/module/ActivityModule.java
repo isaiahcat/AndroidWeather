@@ -23,15 +23,9 @@ import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourceAdapter;
 import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourceMvpPresenter;
 import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourceMvpView;
 import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourcePresenter;
-import com.weather.isaiahj.androidweather.ui.login.LoginMvpPresenter;
-import com.weather.isaiahj.androidweather.ui.login.LoginMvpView;
-import com.weather.isaiahj.androidweather.ui.login.LoginPresenter;
 import com.weather.isaiahj.androidweather.ui.main.MainMvpPresenter;
 import com.weather.isaiahj.androidweather.ui.main.MainMvpView;
 import com.weather.isaiahj.androidweather.ui.main.MainPresenter;
-import com.weather.isaiahj.androidweather.ui.main.rating.RatingDialogMvpPresenter;
-import com.weather.isaiahj.androidweather.ui.main.rating.RatingDialogMvpView;
-import com.weather.isaiahj.androidweather.ui.main.rating.RatingDialogPresenter;
 import com.weather.isaiahj.androidweather.ui.splash.SplashMvpPresenter;
 import com.weather.isaiahj.androidweather.ui.splash.SplashMvpView;
 import com.weather.isaiahj.androidweather.ui.splash.SplashPresenter;
@@ -93,21 +87,8 @@ public class ActivityModule {
 
     @Provides
     @PerActivity
-    LoginMvpPresenter<LoginMvpView> provideLoginPresenter(
-            LoginPresenter<LoginMvpView> presenter) {
-        return presenter;
-    }
-
-    @Provides
-    @PerActivity
     MainMvpPresenter<MainMvpView> provideMainPresenter(
             MainPresenter<MainMvpView> presenter) {
-        return presenter;
-    }
-
-    @Provides
-    RatingDialogMvpPresenter<RatingDialogMvpView> provideRateUsPresenter(
-            RatingDialogPresenter<RatingDialogMvpView> presenter) {
         return presenter;
     }
 

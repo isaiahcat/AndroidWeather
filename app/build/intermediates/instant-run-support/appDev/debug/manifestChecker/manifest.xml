@@ -48,10 +48,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.weather.isaiahj.androidweather.ui.login.LoginActivity"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait" />
-        <activity
             android:name="com.weather.isaiahj.androidweather.ui.main.MainActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />

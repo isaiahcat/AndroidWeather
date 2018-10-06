@@ -12,11 +12,9 @@ import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideCompos
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideFeedPagerAdapterFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideFeedPresenterFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideLinearLayoutManagerFactory;
-import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideLoginPresenterFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideMainPresenterFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideOpenSourceAdapterFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideOpenSourcePresenterFactory;
-import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideRateUsPresenterFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideSchedulerProviderFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideSplashPresenterFactory;
 import com.weather.isaiahj.androidweather.ui.about.AboutFragment;
@@ -46,24 +44,12 @@ import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourceMvpPresen
 import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourceMvpView;
 import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourcePresenter;
 import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourcePresenter_Factory;
-import com.weather.isaiahj.androidweather.ui.login.LoginActivity;
-import com.weather.isaiahj.androidweather.ui.login.LoginActivity_MembersInjector;
-import com.weather.isaiahj.androidweather.ui.login.LoginMvpPresenter;
-import com.weather.isaiahj.androidweather.ui.login.LoginMvpView;
-import com.weather.isaiahj.androidweather.ui.login.LoginPresenter;
-import com.weather.isaiahj.androidweather.ui.login.LoginPresenter_Factory;
 import com.weather.isaiahj.androidweather.ui.main.MainActivity;
 import com.weather.isaiahj.androidweather.ui.main.MainActivity_MembersInjector;
 import com.weather.isaiahj.androidweather.ui.main.MainMvpPresenter;
 import com.weather.isaiahj.androidweather.ui.main.MainMvpView;
 import com.weather.isaiahj.androidweather.ui.main.MainPresenter;
 import com.weather.isaiahj.androidweather.ui.main.MainPresenter_Factory;
-import com.weather.isaiahj.androidweather.ui.main.rating.RateUsDialog;
-import com.weather.isaiahj.androidweather.ui.main.rating.RateUsDialog_MembersInjector;
-import com.weather.isaiahj.androidweather.ui.main.rating.RatingDialogMvpPresenter;
-import com.weather.isaiahj.androidweather.ui.main.rating.RatingDialogMvpView;
-import com.weather.isaiahj.androidweather.ui.main.rating.RatingDialogPresenter;
-import com.weather.isaiahj.androidweather.ui.main.rating.RatingDialogPresenter_Factory;
 import com.weather.isaiahj.androidweather.ui.splash.SplashActivity;
 import com.weather.isaiahj.androidweather.ui.splash.SplashActivity_MembersInjector;
 import com.weather.isaiahj.androidweather.ui.splash.SplashMvpPresenter;
@@ -96,12 +82,6 @@ public final class DaggerActivityComponent implements ActivityComponent {
   private Provider<MainMvpPresenter<MainMvpView>> provideMainPresenterProvider;
 
   private MembersInjector<MainActivity> mainActivityMembersInjector;
-
-  private Provider<LoginPresenter<LoginMvpView>> loginPresenterProvider;
-
-  private Provider<LoginMvpPresenter<LoginMvpView>> provideLoginPresenterProvider;
-
-  private MembersInjector<LoginActivity> loginActivityMembersInjector;
 
   private Provider<SplashPresenter<SplashMvpView>> splashPresenterProvider;
 
@@ -142,12 +122,6 @@ public final class DaggerActivityComponent implements ActivityComponent {
   private Provider<BlogAdapter> provideBlogAdapterProvider;
 
   private MembersInjector<BlogFragment> blogFragmentMembersInjector;
-
-  private Provider<RatingDialogPresenter<RatingDialogMvpView>> ratingDialogPresenterProvider;
-
-  private Provider<RatingDialogMvpPresenter<RatingDialogMvpView>> provideRateUsPresenterProvider;
-
-  private MembersInjector<RateUsDialog> rateUsDialogMembersInjector;
 
   private DaggerActivityComponent(Builder builder) {
     assert builder != null;
@@ -193,21 +167,6 @@ public final class DaggerActivityComponent implements ActivityComponent {
 
     this.mainActivityMembersInjector =
         MainActivity_MembersInjector.create(provideMainPresenterProvider);
-
-    this.loginPresenterProvider =
-        LoginPresenter_Factory.create(
-            MembersInjectors.<LoginPresenter<LoginMvpView>>noOp(),
-            getDataManagerProvider,
-            provideSchedulerProvider,
-            provideCompositeDisposableProvider);
-
-    this.provideLoginPresenterProvider =
-        DoubleCheck.provider(
-            ActivityModule_ProvideLoginPresenterFactory.create(
-                builder.activityModule, loginPresenterProvider));
-
-    this.loginActivityMembersInjector =
-        LoginActivity_MembersInjector.create(provideLoginPresenterProvider);
 
     this.splashPresenterProvider =
         SplashPresenter_Factory.create(
@@ -303,30 +262,11 @@ public final class DaggerActivityComponent implements ActivityComponent {
             provideBlogMvpPresenterProvider,
             provideBlogAdapterProvider,
             provideLinearLayoutManagerProvider);
-
-    this.ratingDialogPresenterProvider =
-        RatingDialogPresenter_Factory.create(
-            MembersInjectors.<RatingDialogPresenter<RatingDialogMvpView>>noOp(),
-            getDataManagerProvider,
-            provideSchedulerProvider,
-            provideCompositeDisposableProvider);
-
-    this.provideRateUsPresenterProvider =
-        ActivityModule_ProvideRateUsPresenterFactory.create(
-            builder.activityModule, ratingDialogPresenterProvider);
-
-    this.rateUsDialogMembersInjector =
-        RateUsDialog_MembersInjector.create(provideRateUsPresenterProvider);
   }
 
   @Override
   public void inject(MainActivity activity) {
     mainActivityMembersInjector.injectMembers(activity);
-  }
-
-  @Override
-  public void inject(LoginActivity activity) {
-    loginActivityMembersInjector.injectMembers(activity);
   }
 
   @Override
@@ -352,11 +292,6 @@ public final class DaggerActivityComponent implements ActivityComponent {
   @Override
   public void inject(BlogFragment fragment) {
     blogFragmentMembersInjector.injectMembers(fragment);
-  }
-
-  @Override
-  public void inject(RateUsDialog dialog) {
-    rateUsDialogMembersInjector.injectMembers(dialog);
   }
 
   public static final class Builder {
