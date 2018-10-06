@@ -16,7 +16,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.weather.isaiahj.androidweather.MvpApp;
+import com.weather.isaiahj.androidweather.WeatherApp;
 import com.weather.isaiahj.androidweather.R;
 import com.weather.isaiahj.androidweather.di.component.ActivityComponent;
 import com.weather.isaiahj.androidweather.di.component.DaggerActivityComponent;
@@ -45,7 +45,7 @@ public abstract class BaseActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         mActivityComponent = DaggerActivityComponent.builder()
                 .activityModule(new ActivityModule(this))
-                .applicationComponent(((MvpApp) getApplication()).getComponent())
+                .applicationComponent(((WeatherApp) getApplication()).getComponent())
                 .build();
 
     }

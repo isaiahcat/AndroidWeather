@@ -26,7 +26,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
-        android:name="com.weather.isaiahj.androidweather.MvpApp"
+        android:name="com.weather.isaiahj.androidweather.WeatherApp"
         android:allowBackup="true"
         android:debuggable="true"
         android:icon="@mipmap/ic_launcher"

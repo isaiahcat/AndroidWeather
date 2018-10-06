@@ -10,7 +10,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
   value = "dagger.internal.codegen.ComponentProcessor",
   comments = "https://google.github.io/dagger"
 )
-public final class MvpApp_MembersInjector implements MembersInjector<MvpApp> {
+public final class MvpApp_MembersInjector implements MembersInjector<WeatherApp> {
   private final Provider<DataManager> mDataManagerProvider;
 
   private final Provider<CalligraphyConfig> mCalligraphyConfigProvider;
@@ -24,14 +24,14 @@ public final class MvpApp_MembersInjector implements MembersInjector<MvpApp> {
     this.mCalligraphyConfigProvider = mCalligraphyConfigProvider;
   }
 
-  public static MembersInjector<MvpApp> create(
+  public static MembersInjector<WeatherApp> create(
       Provider<DataManager> mDataManagerProvider,
       Provider<CalligraphyConfig> mCalligraphyConfigProvider) {
     return new MvpApp_MembersInjector(mDataManagerProvider, mCalligraphyConfigProvider);
   }
 
   @Override
-  public void injectMembers(MvpApp instance) {
+  public void injectMembers(WeatherApp instance) {
     if (instance == null) {
       throw new NullPointerException("Cannot inject members into a null reference");
     }
@@ -40,12 +40,12 @@ public final class MvpApp_MembersInjector implements MembersInjector<MvpApp> {
   }
 
   public static void injectMDataManager(
-      MvpApp instance, Provider<DataManager> mDataManagerProvider) {
+          WeatherApp instance, Provider<DataManager> mDataManagerProvider) {
     instance.mDataManager = mDataManagerProvider.get();
   }
 
   public static void injectMCalligraphyConfig(
-      MvpApp instance, Provider<CalligraphyConfig> mCalligraphyConfigProvider) {
+          WeatherApp instance, Provider<CalligraphyConfig> mCalligraphyConfigProvider) {
     instance.mCalligraphyConfig = mCalligraphyConfigProvider.get();
   }
 }

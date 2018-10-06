@@ -2,8 +2,8 @@ package com.weather.isaiahj.androidweather.di.component;
 
 import android.app.Application;
 import android.content.Context;
-import com.weather.isaiahj.androidweather.MvpApp;
-import com.weather.isaiahj.androidweather.MvpApp_MembersInjector;
+import com.weather.isaiahj.androidweather.WeatherApp;
+import com.weather.isaiahj.androidweather.WeatherApp_MembersInjector;
 import com.weather.isaiahj.androidweather.data.AppDataManager;
 import com.weather.isaiahj.androidweather.data.AppDataManager_Factory;
 import com.weather.isaiahj.androidweather.data.DataManager;
@@ -15,6 +15,8 @@ import com.weather.isaiahj.androidweather.data.db.DbOpenHelper_Factory;
 import com.weather.isaiahj.androidweather.data.network.ApiHeader;
 import com.weather.isaiahj.androidweather.data.network.ApiHeader_Factory;
 import com.weather.isaiahj.androidweather.data.network.ApiHelper;
+import com.weather.isaiahj.androidweather.data.network.ApiParameter;
+import com.weather.isaiahj.androidweather.data.network.ApiParameter_Factory;
 import com.weather.isaiahj.androidweather.data.network.AppApiHelper;
 import com.weather.isaiahj.androidweather.data.network.AppApiHelper_Factory;
 import com.weather.isaiahj.androidweather.data.prefs.AppPreferencesHelper;
@@ -28,11 +30,10 @@ import com.weather.isaiahj.androidweather.di.module.ApplicationModule_ProvideCon
 import com.weather.isaiahj.androidweather.di.module.ApplicationModule_ProvideDataManagerFactory;
 import com.weather.isaiahj.androidweather.di.module.ApplicationModule_ProvideDatabaseNameFactory;
 import com.weather.isaiahj.androidweather.di.module.ApplicationModule_ProvideDbHelperFactory;
+import com.weather.isaiahj.androidweather.di.module.ApplicationModule_ProvideIdApiParameterFactory;
 import com.weather.isaiahj.androidweather.di.module.ApplicationModule_ProvidePreferenceNameFactory;
 import com.weather.isaiahj.androidweather.di.module.ApplicationModule_ProvidePreferencesHelperFactory;
-import com.weather.isaiahj.androidweather.di.module.ApplicationModule_ProvideProtectedApiHeaderFactory;
-import com.weather.isaiahj.androidweather.service.SyncService;
-import com.weather.isaiahj.androidweather.service.SyncService_MembersInjector;
+import com.weather.isaiahj.androidweather.di.module.ApplicationModule_ProvidePublicApiHeaderFactory;
 import dagger.MembersInjector;
 import dagger.internal.DoubleCheck;
 import dagger.internal.MembersInjectors;
@@ -62,9 +63,13 @@ public final class DaggerApplicationComponent implements ApplicationComponent {
 
   private Provider<PreferencesHelper> providePreferencesHelperProvider;
 
-  private Provider<ApiHeader.PublicApiHeader> provideProtectedApiHeaderProvider;
+  private Provider<ApiHeader.PublicApiHeader> providePublicApiHeaderProvider;
 
   private Provider<ApiHeader> apiHeaderProvider;
+
+  private Provider<ApiParameter.IdApiParameter> provideIdApiParameterProvider;
+
+  private Provider<ApiParameter> apiParameterProvider;
 
   private Provider<AppApiHelper> appApiHelperProvider;
 
@@ -76,9 +81,7 @@ public final class DaggerApplicationComponent implements ApplicationComponent {
 
   private Provider<CalligraphyConfig> provideCalligraphyDefaultConfigProvider;
 
-  private MembersInjector<MvpApp> mvpAppMembersInjector;
-
-  private MembersInjector<SyncService> syncServiceMembersInjector;
+  private MembersInjector<WeatherApp> weatherAppMembersInjector;
 
   private Provider<Application> provideApplicationProvider;
 
@@ -128,15 +131,22 @@ public final class DaggerApplicationComponent implements ApplicationComponent {
             ApplicationModule_ProvidePreferencesHelperFactory.create(
                 builder.applicationModule, appPreferencesHelperProvider));
 
-    this.provideProtectedApiHeaderProvider =
+    this.providePublicApiHeaderProvider =
         DoubleCheck.provider(
-            ApplicationModule_ProvideProtectedApiHeaderFactory.create(builder.applicationModule));
+            ApplicationModule_ProvidePublicApiHeaderFactory.create(builder.applicationModule));
 
     this.apiHeaderProvider =
-        DoubleCheck.provider(ApiHeader_Factory.create(provideProtectedApiHeaderProvider));
+        DoubleCheck.provider(ApiHeader_Factory.create(providePublicApiHeaderProvider));
+
+    this.provideIdApiParameterProvider =
+        DoubleCheck.provider(
+            ApplicationModule_ProvideIdApiParameterFactory.create(builder.applicationModule));
+
+    this.apiParameterProvider =
+        DoubleCheck.provider(ApiParameter_Factory.create(provideIdApiParameterProvider));
 
     this.appApiHelperProvider =
-        DoubleCheck.provider(AppApiHelper_Factory.create(apiHeaderProvider));
+        DoubleCheck.provider(AppApiHelper_Factory.create(apiHeaderProvider, apiParameterProvider));
 
     this.provideApiHelperProvider =
         DoubleCheck.provider(
@@ -161,25 +171,17 @@ public final class DaggerApplicationComponent implements ApplicationComponent {
             ApplicationModule_ProvideCalligraphyDefaultConfigFactory.create(
                 builder.applicationModule));
 
-    this.mvpAppMembersInjector =
-        MvpApp_MembersInjector.create(
+    this.weatherAppMembersInjector =
+        WeatherApp_MembersInjector.create(
             provideDataManagerProvider, provideCalligraphyDefaultConfigProvider);
-
-    this.syncServiceMembersInjector =
-        SyncService_MembersInjector.create(provideDataManagerProvider);
 
     this.provideApplicationProvider =
         ApplicationModule_ProvideApplicationFactory.create(builder.applicationModule);
   }
 
   @Override
-  public void inject(MvpApp app) {
-    mvpAppMembersInjector.injectMembers(app);
-  }
-
-  @Override
-  public void inject(SyncService service) {
-    syncServiceMembersInjector.injectMembers(service);
+  public void inject(WeatherApp app) {
+    weatherAppMembersInjector.injectMembers(app);
   }
 
   @Override

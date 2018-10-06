@@ -85,7 +85,7 @@ MERGED from [com.android.support:support-media-compat:26.1.0] /Users/Guest/.grad
 	android:theme
 		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:27:9-40
 	android:name
-		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:22:9-65
+		ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:22:9-69
 service#com.weather.isaiahj.androidweather.service.SyncService
 ADDED from /Users/Guest/Desktop/AndroidWeather/app/src/main/AndroidManifest.xml:29:9-56
 	android:name

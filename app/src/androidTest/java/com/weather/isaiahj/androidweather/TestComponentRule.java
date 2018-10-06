@@ -33,7 +33,7 @@ public class TestComponentRule implements TestRule {
     }
 
     private void setupDaggerTestComponentInApplication() {
-        MvpApp application = ((MvpApp) mContext.getApplicationContext());
+        WeatherApp application = ((WeatherApp) mContext.getApplicationContext());
         mTestComponent = DaggerTestComponent.builder()
                 .applicationTestModule(new ApplicationTestModule(application))
                 .build();

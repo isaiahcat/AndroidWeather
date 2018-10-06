@@ -564,10 +564,6 @@
         "source": "/Users/Guest/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/31d74d7f196d2154560a584d962dede1/res/color-v23/abc_btn_colored_borderless_text_material.xml"
     },
     {
-        "merged": "/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/res/merged/appDev/debug/menu_main.xml.flat",
-        "source": "/Users/Guest/Desktop/AndroidWeather/app/src/main/res/menu/main.xml"
-    },
-    {
         "merged": "/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/res/merged/appDev/debug/drawable-mdpi-v4_abc_menu_hardkey_panel_mtrl_mult.9.png.flat",
         "source": "/Users/Guest/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/31d74d7f196d2154560a584d962dede1/res/drawable-mdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
@@ -1934,10 +1930,6 @@
     {
         "merged": "/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/res/merged/appDev/debug/drawable-mdpi-v4_notification_bg_low_normal.9.png.flat",
         "source": "/Users/Guest/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/cc2a74209262bad722ab458caf6fcf92/res/drawable-mdpi-v4/notification_bg_low_normal.9.png"
-    },
-    {
-        "merged": "/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/res/merged/appDev/debug/menu_drawer.xml.flat",
-        "source": "/Users/Guest/Desktop/AndroidWeather/app/src/main/res/menu/drawer.xml"
     },
     {
         "merged": "/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/res/merged/appDev/debug/color_abc_tint_switch_track.xml.flat",

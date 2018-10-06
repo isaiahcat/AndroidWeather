@@ -21,6 +21,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.annotations.Nullable;
 
 /**
  * Created by Janisharali on 25-05-2017.
@@ -66,11 +67,7 @@ public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     @Override
     public int getItemCount() {
-        if (mBulkCurrentWeather != null && !mBulkCurrentWeather.getList().isEmpty()) {
-            return mBulkCurrentWeather.getList().size();
-        } else {
-            return 1;
-        }
+        return hasItems() ? mBulkCurrentWeather.getList().size() : 1;
     }
 
     public void addItems(BulkCurrentWeather weatherList) {
@@ -84,18 +81,23 @@ public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     public class ViewHolder extends BaseViewHolder {
 
+        @Nullable
         @BindView(R.id.cover_image_view)
         ImageView coverImageView;
 
+        @Nullable
         @BindView(R.id.title_text_view)
         TextView titleTextView;
 
+        @Nullable
         @BindView(R.id.author_text_view)
         TextView authorTextView;
 
+        @Nullable
         @BindView(R.id.date_text_view)
         TextView dateTextView;
 
+        @Nullable
         @BindView(R.id.content_text_view)
         TextView contentTextView;
 
@@ -105,9 +107,9 @@ public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         }
 
         protected void clear() {
-            coverImageView.setImageDrawable(null);
-            titleTextView.setText("");
-            contentTextView.setText("");
+            if (coverImageView != null) coverImageView.setImageDrawable(null);
+            if (titleTextView != null) titleTextView.setText("");
+            if (contentTextView != null) contentTextView.setText("");
         }
 
         public void onBind(int position) {

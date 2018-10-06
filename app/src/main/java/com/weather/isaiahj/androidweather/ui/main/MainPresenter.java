@@ -50,24 +50,4 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
                 }));
     }
 
-    @Override
-    public void onCardExhausted() {
-        getCompositeDisposable().add(getDataManager()
-                .getAllQuestions()
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<List<Question>>() {
-                    @Override
-                    public void accept(List<Question> questionList) throws Exception {
-                        if (!isViewAttached()) {
-                            return;
-                        }
-
-                        if (questionList != null) {
-                            getMvpView().reloadWeatherList(questionList);
-                        }
-                    }
-                }));
-    }
-
 }

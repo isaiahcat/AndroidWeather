@@ -7,38 +7,26 @@
     format="10"
     ir-eligibility="METHOD_DELETED"
     plugin-version="3.0.1"
-    timestamp="1538840098925"
+    timestamp="1538848161302"
     token="-3607048387194683679"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="12751" />
+        duration="4183" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="117" />
+        duration="72" />
     <task
         name="verifier"
-        duration="102" />
+        duration="6" />
 
-    <artifact
-        location="/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/split-apk/appDev/debug/slices/slice_4.apk"
-        type="SPLIT" />
-    <artifact
-        location="/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/split-apk/appDev/debug/slices/slice_2.apk"
-        type="SPLIT" />
     <artifact
         location="/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/split-apk/appDev/debug/slices/slice_0.apk"
         type="SPLIT" />
-    <artifact
-        location="/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/split-apk/appDev/debug/slices/slice_7.apk"
-        type="SPLIT" />
-    <artifact
-        location="/Users/Guest/Desktop/AndroidWeather/app/build/outputs/apk/appDev/debug/app-appDev-debug.apk"
-        type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
@@ -83,24 +71,50 @@
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="METHOD_DELETED"
-        timestamp="1538840098925"
+        ir-eligibility="R_CLASS_CHANGE"
+        timestamp="1538847271943"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/split-apk/appDev/debug/slices/slice_4.apk"
+            location="/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/split-apk/appDev/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
             location="/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/split-apk/appDev/debug/slices/slice_2.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/split-apk/appDev/debug/slices/slice_0.apk"
+            location="/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/split-apk/appDev/debug/slices/slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/split-apk/appDev/debug/slices/slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/split-apk/appDev/debug/slices/slice_5.apk"
             type="SPLIT" />
         <artifact
             location="/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/split-apk/appDev/debug/slices/slice_7.apk"
             type="SPLIT" />
         <artifact
+            location="/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/split-apk/appDev/debug/slices/slice_8.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/split-apk/appDev/debug/slices/slice_9.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1538847787302"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
             location="/Users/Guest/Desktop/AndroidWeather/app/build/outputs/apk/appDev/debug/app-appDev-debug.apk"
             type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="METHOD_DELETED"
+        timestamp="1538848161302"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/split-apk/appDev/debug/slices/slice_0.apk"
+            type="SPLIT" />
     </build>
 
 </instant-run>

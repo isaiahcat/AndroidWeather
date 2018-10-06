@@ -3,11 +3,10 @@ package com.weather.isaiahj.androidweather.di.component;
 import android.app.Application;
 import android.content.Context;
 
-import com.weather.isaiahj.androidweather.MvpApp;
+import com.weather.isaiahj.androidweather.WeatherApp;
 import com.weather.isaiahj.androidweather.data.DataManager;
 import com.weather.isaiahj.androidweather.di.ApplicationContext;
 import com.weather.isaiahj.androidweather.di.module.ApplicationModule;
-import com.weather.isaiahj.androidweather.service.SyncService;
 
 import javax.inject.Singleton;
 
@@ -21,9 +20,7 @@ import dagger.Component;
 @Component(modules = ApplicationModule.class)
 public interface ApplicationComponent {
 
-    void inject(MvpApp app);
-
-    void inject(SyncService service);
+    void inject(WeatherApp app);
 
     @ApplicationContext
     Context context();
