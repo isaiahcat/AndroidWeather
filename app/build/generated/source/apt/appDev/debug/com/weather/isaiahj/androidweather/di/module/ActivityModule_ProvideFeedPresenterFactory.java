@@ -1,8 +1,8 @@
 package com.weather.isaiahj.androidweather.di.module;
 
-import com.weather.isaiahj.androidweather.ui.feed.FeedMvpPresenter;
-import com.weather.isaiahj.androidweather.ui.feed.FeedMvpView;
-import com.weather.isaiahj.androidweather.ui.feed.FeedPresenter;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailMvpPresenter;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailMvpView;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailPresenter;
 import dagger.internal.Factory;
 import dagger.internal.Preconditions;
 import javax.annotation.Generated;
@@ -13,13 +13,14 @@ import javax.inject.Provider;
   comments = "https://google.github.io/dagger"
 )
 public final class ActivityModule_ProvideFeedPresenterFactory
-    implements Factory<FeedMvpPresenter<FeedMvpView>> {
+    implements Factory<WeatherDetailMvpPresenter<WeatherDetailMvpView>> {
   private final ActivityModule module;
 
-  private final Provider<FeedPresenter<FeedMvpView>> presenterProvider;
+  private final Provider<WeatherDetailPresenter<WeatherDetailMvpView>> presenterProvider;
 
   public ActivityModule_ProvideFeedPresenterFactory(
-      ActivityModule module, Provider<FeedPresenter<FeedMvpView>> presenterProvider) {
+      ActivityModule module,
+      Provider<WeatherDetailPresenter<WeatherDetailMvpView>> presenterProvider) {
     assert module != null;
     this.module = module;
     assert presenterProvider != null;
@@ -27,20 +28,21 @@ public final class ActivityModule_ProvideFeedPresenterFactory
   }
 
   @Override
-  public FeedMvpPresenter<FeedMvpView> get() {
+  public WeatherDetailMvpPresenter<WeatherDetailMvpView> get() {
     return Preconditions.checkNotNull(
         module.provideFeedPresenter(presenterProvider.get()),
         "Cannot return null from a non-@Nullable @Provides method");
   }
 
-  public static Factory<FeedMvpPresenter<FeedMvpView>> create(
-      ActivityModule module, Provider<FeedPresenter<FeedMvpView>> presenterProvider) {
+  public static Factory<WeatherDetailMvpPresenter<WeatherDetailMvpView>> create(
+      ActivityModule module,
+      Provider<WeatherDetailPresenter<WeatherDetailMvpView>> presenterProvider) {
     return new ActivityModule_ProvideFeedPresenterFactory(module, presenterProvider);
   }
 
-  /** Proxies {@link ActivityModule#provideFeedPresenter(FeedPresenter)}. */
-  public static FeedMvpPresenter<FeedMvpView> proxyProvideFeedPresenter(
-      ActivityModule instance, FeedPresenter<FeedMvpView> presenter) {
+  /** Proxies {@link ActivityModule#provideFeedPresenter(WeatherDetailPresenter)}. */
+  public static WeatherDetailMvpPresenter<WeatherDetailMvpView> proxyProvideFeedPresenter(
+      ActivityModule instance, WeatherDetailPresenter<WeatherDetailMvpView> presenter) {
     return instance.provideFeedPresenter(presenter);
   }
 }

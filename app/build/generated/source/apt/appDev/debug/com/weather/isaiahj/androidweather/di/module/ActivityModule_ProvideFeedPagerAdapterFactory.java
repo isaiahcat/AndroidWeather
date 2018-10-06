@@ -1,7 +1,7 @@
 package com.weather.isaiahj.androidweather.di.module;
 
 import android.support.v7.app.AppCompatActivity;
-import com.weather.isaiahj.androidweather.ui.feed.FeedPagerAdapter;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailPagerAdapter;
 import dagger.internal.Factory;
 import dagger.internal.Preconditions;
 import javax.annotation.Generated;
@@ -12,7 +12,7 @@ import javax.inject.Provider;
   comments = "https://google.github.io/dagger"
 )
 public final class ActivityModule_ProvideFeedPagerAdapterFactory
-    implements Factory<FeedPagerAdapter> {
+    implements Factory<WeatherDetailPagerAdapter> {
   private final ActivityModule module;
 
   private final Provider<AppCompatActivity> activityProvider;
@@ -26,19 +26,19 @@ public final class ActivityModule_ProvideFeedPagerAdapterFactory
   }
 
   @Override
-  public FeedPagerAdapter get() {
+  public WeatherDetailPagerAdapter get() {
     return Preconditions.checkNotNull(
         module.provideFeedPagerAdapter(activityProvider.get()),
         "Cannot return null from a non-@Nullable @Provides method");
   }
 
-  public static Factory<FeedPagerAdapter> create(
+  public static Factory<WeatherDetailPagerAdapter> create(
       ActivityModule module, Provider<AppCompatActivity> activityProvider) {
     return new ActivityModule_ProvideFeedPagerAdapterFactory(module, activityProvider);
   }
 
   /** Proxies {@link ActivityModule#provideFeedPagerAdapter(AppCompatActivity)}. */
-  public static FeedPagerAdapter proxyProvideFeedPagerAdapter(
+  public static WeatherDetailPagerAdapter proxyProvideFeedPagerAdapter(
       ActivityModule instance, AppCompatActivity activity) {
     return instance.provideFeedPagerAdapter(activity);
   }

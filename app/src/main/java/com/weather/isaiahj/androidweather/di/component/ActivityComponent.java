@@ -3,7 +3,7 @@ package com.weather.isaiahj.androidweather.di.component;
 import com.weather.isaiahj.androidweather.di.PerActivity;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule;
 import com.weather.isaiahj.androidweather.ui.about.AboutFragment;
-import com.weather.isaiahj.androidweather.ui.feed.FeedActivity;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailActivity;
 import com.weather.isaiahj.androidweather.ui.main.MainActivity;
 import com.weather.isaiahj.androidweather.ui.main.weatherlist.WeatherListFragment;
 import com.weather.isaiahj.androidweather.ui.splash.SplashActivity;
@@ -22,7 +22,7 @@ public interface ActivityComponent {
 
     void inject(SplashActivity activity);
 
-    void inject(FeedActivity activity);
+    void inject(WeatherDetailActivity activity);
 
     void inject(AboutFragment fragment);
 

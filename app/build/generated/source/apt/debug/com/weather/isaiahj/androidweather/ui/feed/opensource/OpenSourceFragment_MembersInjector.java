@@ -1,4 +1,4 @@
-package com.weather.isaiahj.androidweather.ui.feed.opensource;
+package com.weather.isaiahj.androidweather.ui.weatherdetail.opensource;
 
 import android.support.v7.widget.LinearLayoutManager;
 import dagger.MembersInjector;

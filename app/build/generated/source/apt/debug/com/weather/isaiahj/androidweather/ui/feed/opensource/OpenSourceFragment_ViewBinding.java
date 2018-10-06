@@ -1,5 +1,5 @@
 // Generated code from Butter Knife. Do not modify!
-package com.weather.isaiahj.androidweather.ui.feed.opensource;
+package com.weather.isaiahj.androidweather.ui.weatherdetail.opensource;
 
 import android.support.annotation.CallSuper;
 import android.support.annotation.UiThread;

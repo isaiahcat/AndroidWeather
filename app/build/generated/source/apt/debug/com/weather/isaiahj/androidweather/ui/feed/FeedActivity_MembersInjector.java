@@ -1,4 +1,4 @@
-package com.weather.isaiahj.androidweather.ui.feed;
+package com.weather.isaiahj.androidweather.ui.weatherdetail;
 
 import dagger.MembersInjector;
 import javax.annotation.Generated;

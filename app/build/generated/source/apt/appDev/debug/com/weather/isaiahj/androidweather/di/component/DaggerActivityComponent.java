@@ -21,13 +21,6 @@ import com.weather.isaiahj.androidweather.ui.about.AboutMvpPresenter;
 import com.weather.isaiahj.androidweather.ui.about.AboutMvpView;
 import com.weather.isaiahj.androidweather.ui.about.AboutPresenter;
 import com.weather.isaiahj.androidweather.ui.about.AboutPresenter_Factory;
-import com.weather.isaiahj.androidweather.ui.feed.FeedActivity;
-import com.weather.isaiahj.androidweather.ui.feed.FeedActivity_MembersInjector;
-import com.weather.isaiahj.androidweather.ui.feed.FeedMvpPresenter;
-import com.weather.isaiahj.androidweather.ui.feed.FeedMvpView;
-import com.weather.isaiahj.androidweather.ui.feed.FeedPagerAdapter;
-import com.weather.isaiahj.androidweather.ui.feed.FeedPresenter;
-import com.weather.isaiahj.androidweather.ui.feed.FeedPresenter_Factory;
 import com.weather.isaiahj.androidweather.ui.main.MainActivity;
 import com.weather.isaiahj.androidweather.ui.main.MainActivity_MembersInjector;
 import com.weather.isaiahj.androidweather.ui.main.MainMvpPresenter;
@@ -47,6 +40,13 @@ import com.weather.isaiahj.androidweather.ui.splash.SplashMvpPresenter;
 import com.weather.isaiahj.androidweather.ui.splash.SplashMvpView;
 import com.weather.isaiahj.androidweather.ui.splash.SplashPresenter;
 import com.weather.isaiahj.androidweather.ui.splash.SplashPresenter_Factory;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailActivity;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailActivity_MembersInjector;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailMvpPresenter;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailMvpView;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailPagerAdapter;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailPresenter;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailPresenter_Factory;
 import com.weather.isaiahj.androidweather.utils.rx.SchedulerProvider;
 import dagger.MembersInjector;
 import dagger.internal.DoubleCheck;
@@ -80,15 +80,15 @@ public final class DaggerActivityComponent implements ActivityComponent {
 
   private MembersInjector<SplashActivity> splashActivityMembersInjector;
 
-  private Provider<FeedPresenter<FeedMvpView>> feedPresenterProvider;
+  private Provider<WeatherDetailPresenter<WeatherDetailMvpView>> weatherDetailPresenterProvider;
 
-  private Provider<FeedMvpPresenter<FeedMvpView>> provideFeedPresenterProvider;
+  private Provider<WeatherDetailMvpPresenter<WeatherDetailMvpView>> provideFeedPresenterProvider;
 
   private Provider<AppCompatActivity> provideActivityProvider;
 
-  private Provider<FeedPagerAdapter> provideFeedPagerAdapterProvider;
+  private Provider<WeatherDetailPagerAdapter> provideFeedPagerAdapterProvider;
 
-  private MembersInjector<FeedActivity> feedActivityMembersInjector;
+  private MembersInjector<WeatherDetailActivity> weatherDetailActivityMembersInjector;
 
   private Provider<AboutPresenter<AboutMvpView>> aboutPresenterProvider;
 
@@ -167,16 +167,16 @@ public final class DaggerActivityComponent implements ActivityComponent {
     this.splashActivityMembersInjector =
         SplashActivity_MembersInjector.create(provideSplashPresenterProvider);
 
-    this.feedPresenterProvider =
-        FeedPresenter_Factory.create(
-            MembersInjectors.<FeedPresenter<FeedMvpView>>noOp(),
+    this.weatherDetailPresenterProvider =
+        WeatherDetailPresenter_Factory.create(
+            MembersInjectors.<WeatherDetailPresenter<WeatherDetailMvpView>>noOp(),
             getDataManagerProvider,
             provideSchedulerProvider,
             provideCompositeDisposableProvider);
 
     this.provideFeedPresenterProvider =
         ActivityModule_ProvideFeedPresenterFactory.create(
-            builder.activityModule, feedPresenterProvider);
+            builder.activityModule, weatherDetailPresenterProvider);
 
     this.provideActivityProvider =
         ActivityModule_ProvideActivityFactory.create(builder.activityModule);
@@ -185,8 +185,8 @@ public final class DaggerActivityComponent implements ActivityComponent {
         ActivityModule_ProvideFeedPagerAdapterFactory.create(
             builder.activityModule, provideActivityProvider);
 
-    this.feedActivityMembersInjector =
-        FeedActivity_MembersInjector.create(
+    this.weatherDetailActivityMembersInjector =
+        WeatherDetailActivity_MembersInjector.create(
             provideFeedPresenterProvider, provideFeedPagerAdapterProvider);
 
     this.aboutPresenterProvider =
@@ -239,8 +239,8 @@ public final class DaggerActivityComponent implements ActivityComponent {
   }
 
   @Override
-  public void inject(FeedActivity activity) {
-    feedActivityMembersInjector.injectMembers(activity);
+  public void inject(WeatherDetailActivity activity) {
+    weatherDetailActivityMembersInjector.injectMembers(activity);
   }
 
   @Override

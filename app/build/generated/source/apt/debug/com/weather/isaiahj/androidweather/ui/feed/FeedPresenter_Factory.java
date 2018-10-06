@@ -1,4 +1,4 @@
-package com.weather.isaiahj.androidweather.ui.feed;
+package com.weather.isaiahj.androidweather.ui.weatherdetail;
 
 import com.weather.isaiahj.androidweather.data.DataManager;
 import com.weather.isaiahj.androidweather.ui.base.MvpView;

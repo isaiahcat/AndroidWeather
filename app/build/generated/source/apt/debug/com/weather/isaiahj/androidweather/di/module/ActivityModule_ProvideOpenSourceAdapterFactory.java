@@ -1,6 +1,6 @@
 package com.weather.isaiahj.androidweather.di.module;
 
-import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourceAdapter;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.opensource.OpenSourceAdapter;
 import dagger.internal.Factory;
 import dagger.internal.Preconditions;
 import javax.annotation.Generated;

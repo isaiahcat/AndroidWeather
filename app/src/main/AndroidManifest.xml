@@ -30,7 +30,7 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.weather.isaiahj.androidweather.ui.feed.FeedActivity"
+            android:name="com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".ui.main.MainActivity"
             android:screenOrientation="portrait">

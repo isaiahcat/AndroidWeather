@@ -1,4 +1,4 @@
-package com.weather.isaiahj.androidweather.ui.feed.opensource;
+package com.weather.isaiahj.androidweather.ui.weatherdetail.opensource;
 
 import com.weather.isaiahj.androidweather.data.DataManager;
 import com.weather.isaiahj.androidweather.utils.rx.SchedulerProvider;

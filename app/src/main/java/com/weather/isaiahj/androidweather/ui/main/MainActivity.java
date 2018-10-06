@@ -13,7 +13,7 @@ import com.weather.isaiahj.androidweather.data.db.model.Question;
 import com.weather.isaiahj.androidweather.data.network.model.currentweather.CurrentWeather;
 import com.weather.isaiahj.androidweather.ui.about.AboutFragment;
 import com.weather.isaiahj.androidweather.ui.base.BaseActivity;
-import com.weather.isaiahj.androidweather.ui.feed.FeedActivity;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailActivity;
 import com.weather.isaiahj.androidweather.ui.main.weatherlist.WeatherListFragment;
 
 import java.util.List;
@@ -124,6 +124,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     public void openWeatherDetailActivity(CurrentWeather currentWeather) {
-        startActivity(FeedActivity.getStartIntent(MainActivity.this));
+        startActivity(WeatherDetailActivity.getStartIntent(MainActivity.this));
     }
 }

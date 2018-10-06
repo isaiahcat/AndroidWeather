@@ -10,10 +10,10 @@ import com.weather.isaiahj.androidweather.di.PerActivity;
 import com.weather.isaiahj.androidweather.ui.about.AboutMvpPresenter;
 import com.weather.isaiahj.androidweather.ui.about.AboutMvpView;
 import com.weather.isaiahj.androidweather.ui.about.AboutPresenter;
-import com.weather.isaiahj.androidweather.ui.feed.FeedMvpPresenter;
-import com.weather.isaiahj.androidweather.ui.feed.FeedMvpView;
-import com.weather.isaiahj.androidweather.ui.feed.FeedPagerAdapter;
-import com.weather.isaiahj.androidweather.ui.feed.FeedPresenter;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailMvpPresenter;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailMvpView;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailPagerAdapter;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailPresenter;
 import com.weather.isaiahj.androidweather.ui.main.MainMvpPresenter;
 import com.weather.isaiahj.androidweather.ui.main.MainMvpView;
 import com.weather.isaiahj.androidweather.ui.main.MainPresenter;
@@ -26,8 +26,6 @@ import com.weather.isaiahj.androidweather.ui.splash.SplashMvpView;
 import com.weather.isaiahj.androidweather.ui.splash.SplashPresenter;
 import com.weather.isaiahj.androidweather.utils.rx.AppSchedulerProvider;
 import com.weather.isaiahj.androidweather.utils.rx.SchedulerProvider;
-
-import java.util.ArrayList;
 
 import dagger.Module;
 import dagger.Provides;
@@ -88,8 +86,8 @@ public class ActivityModule {
     }
 
     @Provides
-    FeedMvpPresenter<FeedMvpView> provideFeedPresenter(
-            FeedPresenter<FeedMvpView> presenter) {
+    WeatherDetailMvpPresenter<WeatherDetailMvpView> provideFeedPresenter(
+            WeatherDetailPresenter<WeatherDetailMvpView> presenter) {
         return presenter;
     }
 
@@ -100,8 +98,8 @@ public class ActivityModule {
     }
 
     @Provides
-    FeedPagerAdapter provideFeedPagerAdapter(AppCompatActivity activity) {
-        return new FeedPagerAdapter(activity.getSupportFragmentManager());
+    WeatherDetailPagerAdapter provideFeedPagerAdapter(AppCompatActivity activity) {
+        return new WeatherDetailPagerAdapter(activity.getSupportFragmentManager());
     }
 
     @Provides
