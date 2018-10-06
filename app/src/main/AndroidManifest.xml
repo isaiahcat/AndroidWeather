@@ -26,8 +26,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <service android:name=".service.SyncService" />
-
         <activity
             android:name="com.weather.isaiahj.androidweather.ui.splash.SplashActivity"
             android:launchMode="singleTop"

@@ -1416,6 +1416,10 @@
         "source": "/Users/Guest/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/31d74d7f196d2154560a584d962dede1/res/drawable/abc_list_selector_background_transition_holo_light.xml"
     },
     {
+        "merged": "/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/res/merged/appDev/debug/drawable_ic_splash.png.flat",
+        "source": "/Users/Guest/Desktop/AndroidWeather/app/src/main/res/drawable/ic_splash.png"
+    },
+    {
         "merged": "/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/res/merged/appDev/debug/layout_abc_expanded_menu_layout.xml.flat",
         "source": "/Users/Guest/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/31d74d7f196d2154560a584d962dede1/res/layout/abc_expanded_menu_layout.xml"
     },

@@ -19,7 +19,7 @@
     android:versionName="1.0.0" >
 
     <uses-sdk
-        android:minSdkVersion="16"
+        android:minSdkVersion="19"
         android:targetSdkVersion="26" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -34,8 +34,6 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
-        <service android:name="com.weather.isaiahj.androidweather.service.SyncService" />
-
         <activity
             android:name="com.weather.isaiahj.androidweather.ui.splash.SplashActivity"
             android:launchMode="singleTop"
