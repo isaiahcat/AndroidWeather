@@ -6,6 +6,13 @@ package com.weather.isaiahj.androidweather.utils;
 
 public final class AppConstants {
 
+    private static final String LONDON_CITY_ID = "2643743";
+    private static final String PRAGUE_CITY_ID = "3067696";
+    private static final String SAN_FRANCISCO_CITY_ID = "5391959";
+
+    public static final String DEFAULT_CITY_IDS = LONDON_CITY_ID + "," + PRAGUE_CITY_ID + "," +
+            SAN_FRANCISCO_CITY_ID;
+
     public static final String STATUS_CODE_SUCCESS = "success";
     public static final String STATUS_CODE_FAILED = "failed";
 

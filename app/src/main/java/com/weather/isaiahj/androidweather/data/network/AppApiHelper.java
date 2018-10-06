@@ -1,6 +1,7 @@
 package com.weather.isaiahj.androidweather.data.network;
 
 import com.rx2androidnetworking.Rx2AndroidNetworking;
+import com.weather.isaiahj.androidweather.data.network.model.BulkCurrentWeather;
 import com.weather.isaiahj.androidweather.data.network.model.currentweather.CurrentWeather;
 
 import javax.inject.Inject;
@@ -33,10 +34,19 @@ public class AppApiHelper implements ApiHelper {
     @Override
     public Observable<CurrentWeather> doGetCurrentWeatherDataForCityId(String cityId) {
         return Rx2AndroidNetworking.get(ApiEndPoint.ENDPOINT_CURRENT_WEATHER)
-                .addHeaders(mApiHeader.getPublicApiHeader())
+                .addQueryParameter(mApiHeader.getPublicApiHeader())
                 .addQueryParameter(mApiParameter.getIdApiParameter(cityId))
                 .build()
                 .getObjectObservable(CurrentWeather.class);
+    }
+
+    @Override
+    public Observable<BulkCurrentWeather> doGetBulkCurrentWeatherData(String cityIds) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.ENDPOINT_BULK_CURRENT_WEATHER)
+                .addQueryParameter(mApiHeader.getPublicApiHeader())
+                .addQueryParameter(mApiParameter.getIdApiParameter(cityIds))
+                .build()
+                .getObjectObservable(BulkCurrentWeather.class);
     }
 }
 

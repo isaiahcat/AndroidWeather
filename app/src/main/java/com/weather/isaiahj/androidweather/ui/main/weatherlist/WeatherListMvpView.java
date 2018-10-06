@@ -9,5 +9,5 @@ import com.weather.isaiahj.androidweather.ui.base.MvpView;
 
 public interface WeatherListMvpView extends MvpView {
 
-    void updateWeatherList(BulkCurrentWeather blogList);
+    void updateWeatherList(BulkCurrentWeather weatherList);
 }

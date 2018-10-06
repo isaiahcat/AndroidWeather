@@ -13,6 +13,7 @@ import com.weather.isaiahj.androidweather.data.db.model.Question;
 import com.weather.isaiahj.androidweather.data.db.model.User;
 import com.weather.isaiahj.androidweather.data.network.ApiHeader;
 import com.weather.isaiahj.androidweather.data.network.ApiHelper;
+import com.weather.isaiahj.androidweather.data.network.model.BulkCurrentWeather;
 import com.weather.isaiahj.androidweather.data.network.model.currentweather.CurrentWeather;
 import com.weather.isaiahj.androidweather.data.prefs.PreferencesHelper;
 import com.weather.isaiahj.androidweather.di.ApplicationContext;
@@ -62,6 +63,21 @@ public class AppDataManager implements DataManager {
     @Override
     public Observable<CurrentWeather> doGetCurrentWeatherDataForCityId(String cityId) {
         return mApiHelper.doGetCurrentWeatherDataForCityId(cityId);
+    }
+
+    @Override
+    public Observable<BulkCurrentWeather> doGetBulkCurrentWeatherData(String cityIds) {
+        return mApiHelper.doGetBulkCurrentWeatherData(cityIds);
+    }
+
+    @Override
+    public Observable<BulkCurrentWeather> doGetBulkCurrentWeatherData() {
+        return mApiHelper.doGetBulkCurrentWeatherData(mPreferencesHelper.getCityIds());
+    }
+
+    @Override
+    public String getCityIds() {
+        return mPreferencesHelper.getCityIds();
     }
 
     @Override

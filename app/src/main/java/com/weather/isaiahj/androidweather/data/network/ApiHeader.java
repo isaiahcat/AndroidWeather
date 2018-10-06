@@ -28,7 +28,7 @@ public class ApiHeader {
     public static final class PublicApiHeader {
 
         @Expose
-        @SerializedName("API_KEY")
+        @SerializedName("APPID")
         private String mApiKey;
 
         @Inject

@@ -77,7 +77,7 @@ public class WeatherListFragment extends BaseFragment implements
 
     @Override
     public void onWeatherListEmptyViewRetryClick() {
-
+        mPresenter.onViewPrepared();
     }
 
     @Override

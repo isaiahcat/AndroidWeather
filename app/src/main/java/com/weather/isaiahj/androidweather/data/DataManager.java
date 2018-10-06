@@ -3,6 +3,7 @@ package com.weather.isaiahj.androidweather.data;
 
 import com.weather.isaiahj.androidweather.data.db.DbHelper;
 import com.weather.isaiahj.androidweather.data.network.ApiHelper;
+import com.weather.isaiahj.androidweather.data.network.model.BulkCurrentWeather;
 import com.weather.isaiahj.androidweather.data.prefs.PreferencesHelper;
 
 import io.reactivex.Observable;
@@ -17,4 +18,5 @@ public interface DataManager extends DbHelper, PreferencesHelper, ApiHelper {
 
     Observable<Boolean> seedDatabaseOptions();
 
+    Observable<BulkCurrentWeather> doGetBulkCurrentWeatherData();
 }
