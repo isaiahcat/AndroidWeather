@@ -14,7 +14,6 @@ import com.weather.isaiahj.androidweather.data.db.DbOpenHelper;
 import com.weather.isaiahj.androidweather.data.db.DbOpenHelper_Factory;
 import com.weather.isaiahj.androidweather.data.network.ApiHeader;
 import com.weather.isaiahj.androidweather.data.network.ApiHeader_Factory;
-import com.weather.isaiahj.androidweather.data.network.ApiHeader_PublicApiHeader_Factory;
 import com.weather.isaiahj.androidweather.data.network.ApiHelper;
 import com.weather.isaiahj.androidweather.data.network.AppApiHelper;
 import com.weather.isaiahj.androidweather.data.network.AppApiHelper_Factory;
@@ -23,7 +22,6 @@ import com.weather.isaiahj.androidweather.data.prefs.AppPreferencesHelper_Factor
 import com.weather.isaiahj.androidweather.data.prefs.PreferencesHelper;
 import com.weather.isaiahj.androidweather.di.module.ApplicationModule;
 import com.weather.isaiahj.androidweather.di.module.ApplicationModule_ProvideApiHelperFactory;
-import com.weather.isaiahj.androidweather.di.module.ApplicationModule_ProvideApiKeyFactory;
 import com.weather.isaiahj.androidweather.di.module.ApplicationModule_ProvideApplicationFactory;
 import com.weather.isaiahj.androidweather.di.module.ApplicationModule_ProvideCalligraphyDefaultConfigFactory;
 import com.weather.isaiahj.androidweather.di.module.ApplicationModule_ProvideContextFactory;
@@ -64,11 +62,7 @@ public final class DaggerApplicationComponent implements ApplicationComponent {
 
   private Provider<PreferencesHelper> providePreferencesHelperProvider;
 
-  private Provider<String> provideApiKeyProvider;
-
-  private Provider<ApiHeader.PublicApiHeader> publicApiHeaderProvider;
-
-  private Provider<ApiHeader.ProtectedApiHeader> provideProtectedApiHeaderProvider;
+  private Provider<ApiHeader.PublicApiHeader> provideProtectedApiHeaderProvider;
 
   private Provider<ApiHeader> apiHeaderProvider;
 
@@ -134,21 +128,12 @@ public final class DaggerApplicationComponent implements ApplicationComponent {
             ApplicationModule_ProvidePreferencesHelperFactory.create(
                 builder.applicationModule, appPreferencesHelperProvider));
 
-    this.provideApiKeyProvider =
-        ApplicationModule_ProvideApiKeyFactory.create(builder.applicationModule);
-
-    this.publicApiHeaderProvider = ApiHeader_PublicApiHeader_Factory.create(provideApiKeyProvider);
-
     this.provideProtectedApiHeaderProvider =
         DoubleCheck.provider(
-            ApplicationModule_ProvideProtectedApiHeaderFactory.create(
-                builder.applicationModule,
-                provideApiKeyProvider,
-                providePreferencesHelperProvider));
+            ApplicationModule_ProvideProtectedApiHeaderFactory.create(builder.applicationModule));
 
     this.apiHeaderProvider =
-        DoubleCheck.provider(
-            ApiHeader_Factory.create(publicApiHeaderProvider, provideProtectedApiHeaderProvider));
+        DoubleCheck.provider(ApiHeader_Factory.create(provideProtectedApiHeaderProvider));
 
     this.appApiHelperProvider =
         DoubleCheck.provider(AppApiHelper_Factory.create(apiHeaderProvider));

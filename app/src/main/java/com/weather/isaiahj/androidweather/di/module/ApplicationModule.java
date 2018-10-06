@@ -11,6 +11,7 @@ import com.weather.isaiahj.androidweather.data.db.AppDbHelper;
 import com.weather.isaiahj.androidweather.data.db.DbHelper;
 import com.weather.isaiahj.androidweather.data.network.ApiHeader;
 import com.weather.isaiahj.androidweather.data.network.ApiHelper;
+import com.weather.isaiahj.androidweather.data.network.ApiParameter;
 import com.weather.isaiahj.androidweather.data.network.AppApiHelper;
 import com.weather.isaiahj.androidweather.data.prefs.AppPreferencesHelper;
 import com.weather.isaiahj.androidweather.data.prefs.PreferencesHelper;
@@ -94,12 +95,14 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    ApiHeader.ProtectedApiHeader provideProtectedApiHeader(@ApiInfo String apiKey,
-                                                           PreferencesHelper preferencesHelper) {
-        return new ApiHeader.ProtectedApiHeader(
-                apiKey,
-                preferencesHelper.getCurrentUserId(),
-                preferencesHelper.getAccessToken());
+    ApiHeader.PublicApiHeader providePublicApiHeader() {
+        return new ApiHeader.PublicApiHeader(BuildConfig.API_KEY);
+    }
+
+    @Provides
+    @Singleton
+    ApiParameter.IdApiParameter provideIdApiParameter(String id) {
+        return new ApiParameter.IdApiParameter(id);
     }
 
     @Provides

@@ -11,17 +11,23 @@ import javax.inject.Provider;
 public final class AppApiHelper_Factory implements Factory<AppApiHelper> {
   private final Provider<ApiHeader> apiHeaderProvider;
 
-  public AppApiHelper_Factory(Provider<ApiHeader> apiHeaderProvider) {
+  private final Provider<ApiParameter> apiParameterProvider;
+
+  public AppApiHelper_Factory(
+      Provider<ApiHeader> apiHeaderProvider, Provider<ApiParameter> apiParameterProvider) {
     assert apiHeaderProvider != null;
     this.apiHeaderProvider = apiHeaderProvider;
+    assert apiParameterProvider != null;
+    this.apiParameterProvider = apiParameterProvider;
   }
 
   @Override
   public AppApiHelper get() {
-    return new AppApiHelper(apiHeaderProvider.get());
+    return new AppApiHelper(apiHeaderProvider.get(), apiParameterProvider.get());
   }
 
-  public static Factory<AppApiHelper> create(Provider<ApiHeader> apiHeaderProvider) {
-    return new AppApiHelper_Factory(apiHeaderProvider);
+  public static Factory<AppApiHelper> create(
+      Provider<ApiHeader> apiHeaderProvider, Provider<ApiParameter> apiParameterProvider) {
+    return new AppApiHelper_Factory(apiHeaderProvider, apiParameterProvider);
   }
 }

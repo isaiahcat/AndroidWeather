@@ -13,11 +13,7 @@ import com.weather.isaiahj.androidweather.data.db.model.Question;
 import com.weather.isaiahj.androidweather.data.db.model.User;
 import com.weather.isaiahj.androidweather.data.network.ApiHeader;
 import com.weather.isaiahj.androidweather.data.network.ApiHelper;
-import com.weather.isaiahj.androidweather.data.network.model.BlogResponse;
-import com.weather.isaiahj.androidweather.data.network.model.LoginRequest;
-import com.weather.isaiahj.androidweather.data.network.model.LoginResponse;
-import com.weather.isaiahj.androidweather.data.network.model.LogoutResponse;
-import com.weather.isaiahj.androidweather.data.network.model.OpenSourceResponse;
+import com.weather.isaiahj.androidweather.data.network.model.currentweather.CurrentWeather;
 import com.weather.isaiahj.androidweather.data.prefs.PreferencesHelper;
 import com.weather.isaiahj.androidweather.di.ApplicationContext;
 import com.weather.isaiahj.androidweather.utils.AppConstants;
@@ -31,7 +27,6 @@ import javax.inject.Singleton;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
-import io.reactivex.Single;
 import io.reactivex.functions.Function;
 
 /**
@@ -65,14 +60,8 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public String getAccessToken() {
-        return mPreferencesHelper.getAccessToken();
-    }
-
-    @Override
-    public void setAccessToken(String accessToken) {
-        mPreferencesHelper.setAccessToken(accessToken);
-        mApiHelper.getApiHeader().getProtectedApiHeader().setAccessToken(accessToken);
+    public Observable<CurrentWeather> doGetCurrentWeatherDataForCityId(String cityId) {
+        return mApiHelper.doGetCurrentWeatherDataForCityId(cityId);
     }
 
     @Override
@@ -83,115 +72,6 @@ public class AppDataManager implements DataManager {
     @Override
     public Observable<List<User>> getAllUsers() {
         return mDbHelper.getAllUsers();
-    }
-
-    @Override
-    public Single<LoginResponse> doGoogleLoginApiCall(LoginRequest.GoogleLoginRequest
-                                                              request) {
-        return mApiHelper.doGoogleLoginApiCall(request);
-    }
-
-    @Override
-    public Single<LoginResponse> doFacebookLoginApiCall(LoginRequest.FacebookLoginRequest
-                                                                request) {
-        return mApiHelper.doFacebookLoginApiCall(request);
-    }
-
-    @Override
-    public Single<LoginResponse> doServerLoginApiCall(LoginRequest.ServerLoginRequest
-                                                              request) {
-        return mApiHelper.doServerLoginApiCall(request);
-    }
-
-    @Override
-    public Single<LogoutResponse> doLogoutApiCall() {
-        return mApiHelper.doLogoutApiCall();
-    }
-
-    @Override
-    public int getCurrentUserLoggedInMode() {
-        return mPreferencesHelper.getCurrentUserLoggedInMode();
-    }
-
-    @Override
-    public void setCurrentUserLoggedInMode(LoggedInMode mode) {
-        mPreferencesHelper.setCurrentUserLoggedInMode(mode);
-    }
-
-    @Override
-    public Long getCurrentUserId() {
-        return mPreferencesHelper.getCurrentUserId();
-    }
-
-    @Override
-    public void setCurrentUserId(Long userId) {
-        mPreferencesHelper.setCurrentUserId(userId);
-    }
-
-    @Override
-    public String getCurrentUserName() {
-        return mPreferencesHelper.getCurrentUserName();
-    }
-
-    @Override
-    public void setCurrentUserName(String userName) {
-        mPreferencesHelper.setCurrentUserName(userName);
-    }
-
-    @Override
-    public String getCurrentUserEmail() {
-        return mPreferencesHelper.getCurrentUserEmail();
-    }
-
-    @Override
-    public void setCurrentUserEmail(String email) {
-        mPreferencesHelper.setCurrentUserEmail(email);
-    }
-
-    @Override
-    public String getCurrentUserProfilePicUrl() {
-        return mPreferencesHelper.getCurrentUserProfilePicUrl();
-    }
-
-    @Override
-    public void setCurrentUserProfilePicUrl(String profilePicUrl) {
-        mPreferencesHelper.setCurrentUserProfilePicUrl(profilePicUrl);
-    }
-
-    @Override
-    public void updateApiHeader(Long userId, String accessToken) {
-        mApiHelper.getApiHeader().getProtectedApiHeader().setUserId(userId);
-        mApiHelper.getApiHeader().getProtectedApiHeader().setAccessToken(accessToken);
-    }
-
-    @Override
-    public void updateUserInfo(
-            String accessToken,
-            Long userId,
-            LoggedInMode loggedInMode,
-            String userName,
-            String email,
-            String profilePicPath) {
-
-        setAccessToken(accessToken);
-        setCurrentUserId(userId);
-        setCurrentUserLoggedInMode(loggedInMode);
-        setCurrentUserName(userName);
-        setCurrentUserEmail(email);
-        setCurrentUserProfilePicUrl(profilePicPath);
-
-        updateApiHeader(userId, accessToken);
-    }
-
-    @Override
-    public void setUserAsLoggedOut() {
-        updateUserInfo(
-                null,
-                null,
-                DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT,
-                null,
-                null,
-                null);
     }
 
     @Override
@@ -283,13 +163,4 @@ public class AppDataManager implements DataManager {
                 });
     }
 
-    @Override
-    public Single<BlogResponse> getBlogApiCall() {
-        return mApiHelper.getBlogApiCall();
-    }
-
-    @Override
-    public Single<OpenSourceResponse> getOpenSourceApiCall() {
-        return mApiHelper.getOpenSourceApiCall();
-    }
 }

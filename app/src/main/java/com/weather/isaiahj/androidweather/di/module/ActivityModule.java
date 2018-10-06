@@ -4,8 +4,6 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
-import com.weather.isaiahj.androidweather.data.network.model.BlogResponse;
-import com.weather.isaiahj.androidweather.data.network.model.OpenSourceResponse;
 import com.weather.isaiahj.androidweather.di.ActivityContext;
 import com.weather.isaiahj.androidweather.di.PerActivity;
 import com.weather.isaiahj.androidweather.ui.about.AboutMvpPresenter;
@@ -19,10 +17,6 @@ import com.weather.isaiahj.androidweather.ui.feed.blogs.BlogAdapter;
 import com.weather.isaiahj.androidweather.ui.feed.blogs.BlogMvpPresenter;
 import com.weather.isaiahj.androidweather.ui.feed.blogs.BlogMvpView;
 import com.weather.isaiahj.androidweather.ui.feed.blogs.BlogPresenter;
-import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourceAdapter;
-import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourceMvpPresenter;
-import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourceMvpView;
-import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourcePresenter;
 import com.weather.isaiahj.androidweather.ui.main.MainMvpPresenter;
 import com.weather.isaiahj.androidweather.ui.main.MainMvpView;
 import com.weather.isaiahj.androidweather.ui.main.MainPresenter;
@@ -99,12 +93,6 @@ public class ActivityModule {
     }
 
     @Provides
-    OpenSourceMvpPresenter<OpenSourceMvpView> provideOpenSourcePresenter(
-            OpenSourcePresenter<OpenSourceMvpView> presenter) {
-        return presenter;
-    }
-
-    @Provides
     BlogMvpPresenter<BlogMvpView> provideBlogMvpPresenter(
             BlogPresenter<BlogMvpView> presenter) {
         return presenter;
@@ -113,11 +101,6 @@ public class ActivityModule {
     @Provides
     FeedPagerAdapter provideFeedPagerAdapter(AppCompatActivity activity) {
         return new FeedPagerAdapter(activity.getSupportFragmentManager());
-    }
-
-    @Provides
-    OpenSourceAdapter provideOpenSourceAdapter() {
-        return new OpenSourceAdapter(new ArrayList<OpenSourceResponse.Repo>());
     }
 
     @Provides

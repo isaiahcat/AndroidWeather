@@ -5,7 +5,6 @@ import com.weather.isaiahj.androidweather.di.module.ActivityModule;
 import com.weather.isaiahj.androidweather.ui.about.AboutFragment;
 import com.weather.isaiahj.androidweather.ui.feed.FeedActivity;
 import com.weather.isaiahj.androidweather.ui.feed.blogs.BlogFragment;
-import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourceFragment;
 import com.weather.isaiahj.androidweather.ui.main.MainActivity;
 import com.weather.isaiahj.androidweather.ui.splash.SplashActivity;
 
@@ -26,8 +25,6 @@ public interface ActivityComponent {
     void inject(FeedActivity activity);
 
     void inject(AboutFragment fragment);
-
-    void inject(OpenSourceFragment fragment);
 
     void inject(BlogFragment fragment);
 

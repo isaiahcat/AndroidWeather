@@ -11,25 +11,18 @@ import javax.inject.Provider;
 public final class ApiHeader_Factory implements Factory<ApiHeader> {
   private final Provider<ApiHeader.PublicApiHeader> publicApiHeaderProvider;
 
-  private final Provider<ApiHeader.ProtectedApiHeader> protectedApiHeaderProvider;
-
-  public ApiHeader_Factory(
-      Provider<ApiHeader.PublicApiHeader> publicApiHeaderProvider,
-      Provider<ApiHeader.ProtectedApiHeader> protectedApiHeaderProvider) {
+  public ApiHeader_Factory(Provider<ApiHeader.PublicApiHeader> publicApiHeaderProvider) {
     assert publicApiHeaderProvider != null;
     this.publicApiHeaderProvider = publicApiHeaderProvider;
-    assert protectedApiHeaderProvider != null;
-    this.protectedApiHeaderProvider = protectedApiHeaderProvider;
   }
 
   @Override
   public ApiHeader get() {
-    return new ApiHeader(publicApiHeaderProvider.get(), protectedApiHeaderProvider.get());
+    return new ApiHeader(publicApiHeaderProvider.get());
   }
 
   public static Factory<ApiHeader> create(
-      Provider<ApiHeader.PublicApiHeader> publicApiHeaderProvider,
-      Provider<ApiHeader.ProtectedApiHeader> protectedApiHeaderProvider) {
-    return new ApiHeader_Factory(publicApiHeaderProvider, protectedApiHeaderProvider);
+      Provider<ApiHeader.PublicApiHeader> publicApiHeaderProvider) {
+    return new ApiHeader_Factory(publicApiHeaderProvider);
   }
 }
