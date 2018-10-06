@@ -10,10 +10,6 @@ import com.weather.isaiahj.androidweather.di.PerActivity;
 import com.weather.isaiahj.androidweather.ui.about.AboutMvpPresenter;
 import com.weather.isaiahj.androidweather.ui.about.AboutMvpView;
 import com.weather.isaiahj.androidweather.ui.about.AboutPresenter;
-import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailMvpPresenter;
-import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailMvpView;
-import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailPagerAdapter;
-import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailPresenter;
 import com.weather.isaiahj.androidweather.ui.main.MainMvpPresenter;
 import com.weather.isaiahj.androidweather.ui.main.MainMvpView;
 import com.weather.isaiahj.androidweather.ui.main.MainPresenter;
@@ -24,6 +20,9 @@ import com.weather.isaiahj.androidweather.ui.main.weatherlist.WeatherListPresent
 import com.weather.isaiahj.androidweather.ui.splash.SplashMvpPresenter;
 import com.weather.isaiahj.androidweather.ui.splash.SplashMvpView;
 import com.weather.isaiahj.androidweather.ui.splash.SplashPresenter;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailMvpPresenter;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailMvpView;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailPresenter;
 import com.weather.isaiahj.androidweather.utils.rx.AppSchedulerProvider;
 import com.weather.isaiahj.androidweather.utils.rx.SchedulerProvider;
 
@@ -95,11 +94,6 @@ public class ActivityModule {
     WeatherListMvpPresenter<WeatherListMvpView> provideWeatherListMvpPresenter(
             WeatherListPresenter<WeatherListMvpView> presenter) {
         return presenter;
-    }
-
-    @Provides
-    WeatherDetailPagerAdapter provideFeedPagerAdapter(AppCompatActivity activity) {
-        return new WeatherDetailPagerAdapter(activity.getSupportFragmentManager());
     }
 
     @Provides

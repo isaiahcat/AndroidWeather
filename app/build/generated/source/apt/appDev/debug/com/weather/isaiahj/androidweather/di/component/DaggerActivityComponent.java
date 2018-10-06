@@ -7,7 +7,6 @@ import com.weather.isaiahj.androidweather.di.module.ActivityModule;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideAboutPresenterFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideActivityFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideCompositeDisposableFactory;
-import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideFeedPagerAdapterFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideFeedPresenterFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideLinearLayoutManagerFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideMainPresenterFactory;
@@ -44,7 +43,6 @@ import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailActivity
 import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailActivity_MembersInjector;
 import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailMvpPresenter;
 import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailMvpView;
-import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailPagerAdapter;
 import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailPresenter;
 import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailPresenter_Factory;
 import com.weather.isaiahj.androidweather.utils.rx.SchedulerProvider;
@@ -84,10 +82,6 @@ public final class DaggerActivityComponent implements ActivityComponent {
 
   private Provider<WeatherDetailMvpPresenter<WeatherDetailMvpView>> provideFeedPresenterProvider;
 
-  private Provider<AppCompatActivity> provideActivityProvider;
-
-  private Provider<WeatherDetailPagerAdapter> provideFeedPagerAdapterProvider;
-
   private MembersInjector<WeatherDetailActivity> weatherDetailActivityMembersInjector;
 
   private Provider<AboutPresenter<AboutMvpView>> aboutPresenterProvider;
@@ -102,6 +96,8 @@ public final class DaggerActivityComponent implements ActivityComponent {
       provideWeatherListMvpPresenterProvider;
 
   private Provider<WeatherListAdapter> provideWeatherListAdapterProvider;
+
+  private Provider<AppCompatActivity> provideActivityProvider;
 
   private Provider<LinearLayoutManager> provideLinearLayoutManagerProvider;
 
@@ -178,16 +174,8 @@ public final class DaggerActivityComponent implements ActivityComponent {
         ActivityModule_ProvideFeedPresenterFactory.create(
             builder.activityModule, weatherDetailPresenterProvider);
 
-    this.provideActivityProvider =
-        ActivityModule_ProvideActivityFactory.create(builder.activityModule);
-
-    this.provideFeedPagerAdapterProvider =
-        ActivityModule_ProvideFeedPagerAdapterFactory.create(
-            builder.activityModule, provideActivityProvider);
-
     this.weatherDetailActivityMembersInjector =
-        WeatherDetailActivity_MembersInjector.create(
-            provideFeedPresenterProvider, provideFeedPagerAdapterProvider);
+        WeatherDetailActivity_MembersInjector.create(provideFeedPresenterProvider);
 
     this.aboutPresenterProvider =
         AboutPresenter_Factory.create(
@@ -216,6 +204,9 @@ public final class DaggerActivityComponent implements ActivityComponent {
 
     this.provideWeatherListAdapterProvider =
         ActivityModule_ProvideWeatherListAdapterFactory.create(builder.activityModule);
+
+    this.provideActivityProvider =
+        ActivityModule_ProvideActivityFactory.create(builder.activityModule);
 
     this.provideLinearLayoutManagerProvider =
         ActivityModule_ProvideLinearLayoutManagerFactory.create(

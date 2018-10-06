@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Oct 07 04:22:24 PHT 2018
+#Sun Oct 07 04:46:44 PHT 2018
 5.base=/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/assets/appDev/debug
 22.path=lib/arm64-v8a/libsqlcipher.so
 32.set=ASSET

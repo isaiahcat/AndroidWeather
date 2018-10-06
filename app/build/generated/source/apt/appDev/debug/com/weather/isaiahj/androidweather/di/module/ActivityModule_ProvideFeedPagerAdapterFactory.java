@@ -1,7 +1,7 @@
 package com.weather.isaiahj.androidweather.di.module;
 
 import android.support.v7.app.AppCompatActivity;
-import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailPagerAdapter;
+
 import dagger.internal.Factory;
 import dagger.internal.Preconditions;
 import javax.annotation.Generated;

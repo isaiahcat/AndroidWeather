@@ -14,7 +14,7 @@ import java.lang.Override;
 public class AboutFragment_ViewBinding implements Unbinder {
   private AboutFragment target;
 
-  private View view2131230839;
+  private View view2131230838;
 
   @UiThread
   public AboutFragment_ViewBinding(final AboutFragment target, View source) {
@@ -22,7 +22,7 @@ public class AboutFragment_ViewBinding implements Unbinder {
 
     View view;
     view = Utils.findRequiredView(source, R.id.nav_back_btn, "method 'onNavBackClick'");
-    view2131230839 = view;
+    view2131230838 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -38,7 +38,7 @@ public class AboutFragment_ViewBinding implements Unbinder {
     target = null;
 
 
-    view2131230839.setOnClickListener(null);
-    view2131230839 = null;
+    view2131230838.setOnClickListener(null);
+    view2131230838 = null;
   }
 }
