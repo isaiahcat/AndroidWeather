@@ -13,14 +13,21 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.weather.isaiahj.androidweather.R;
 import com.weather.isaiahj.androidweather.data.DataManager;
+import com.weather.isaiahj.androidweather.data.network.ApiCallback;
 import com.weather.isaiahj.androidweather.data.network.model.ApiError;
 import com.weather.isaiahj.androidweather.utils.AppConstants;
 import com.weather.isaiahj.androidweather.utils.rx.SchedulerProvider;
 
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.net.ssl.HttpsURLConnection;
 
+import io.reactivex.Observable;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Consumer;
 
 /**
  * Base class that implements the Presenter interface and provides a base implementation for
@@ -118,6 +125,52 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
             Log.e(TAG, "handleApiError", e);
             getMvpView().onError(R.string.api_default_error);
         }
+    }
+
+    @Override
+    public void doApiCallForResponse(Observable observable, final ApiCallback callback) {
+
+        getCompositeDisposable().add(observable
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(new Consumer<Object>() {
+                    @Override
+                    public void accept(Object response) throws Exception {
+
+                        if (!isViewAttached()) {
+                            return;
+                        }
+
+                        getMvpView().hideLoading();
+
+                        if (response instanceof List) {
+                            callback.onSuccess((List) response);
+                        } else if (response != null) {
+                            callback.onSuccess(response);
+                        } else {
+                            callback.onSuccess();
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+
+                        if (!isViewAttached()) {
+                            return;
+                        }
+
+                        getMvpView().hideLoading();
+                        getMvpView().onError(throwable.getMessage());
+
+                        callback.onFailure(throwable);
+
+                        // handle load accounts error here
+                        if (throwable instanceof ANError) {
+                            ANError anError = (ANError) throwable;
+                            handleApiError(anError);
+                        }
+                    }
+                }));
     }
 
     public static class MvpViewNotAttachedException extends RuntimeException {

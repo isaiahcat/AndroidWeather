@@ -5,6 +5,9 @@ package com.weather.isaiahj.androidweather.ui.base;
  */
 
 import com.androidnetworking.error.ANError;
+import com.weather.isaiahj.androidweather.data.network.ApiCallback;
+
+import io.reactivex.Observable;
 
 /**
  * Every presenter in the app must either implement this interface or extend BasePresenter
@@ -17,4 +20,7 @@ public interface MvpPresenter<V extends MvpView> {
     void onDetach();
 
     void handleApiError(ANError error);
+
+    void doApiCallForResponse(Observable observable, final ApiCallback callback);
+
 }
