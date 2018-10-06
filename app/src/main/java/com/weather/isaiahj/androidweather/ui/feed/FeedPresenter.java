@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
- * Created by janisharali on 25/05/17.
+ * Created by isaiahj on 07/10/2018.
  */
 
 public class FeedPresenter<V extends MvpView> extends BasePresenter<V> implements

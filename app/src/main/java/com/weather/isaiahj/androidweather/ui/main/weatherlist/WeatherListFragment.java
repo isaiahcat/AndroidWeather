@@ -1,4 +1,4 @@
-package com.weather.isaiahj.androidweather.ui.feed.blogs;
+package com.weather.isaiahj.androidweather.ui.main.weatherlist;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.weather.isaiahj.androidweather.R;
-import com.weather.isaiahj.androidweather.data.network.model.BlogResponse;
+import com.weather.isaiahj.androidweather.data.network.model.BulkCurrentWeather;
 import com.weather.isaiahj.androidweather.di.component.ActivityComponent;
 import com.weather.isaiahj.androidweather.ui.base.BaseFragment;
 
@@ -22,29 +22,29 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by janisharali on 25/05/17.
+ * Created by isaiahj on 07/10/2018.
  */
 
-public class BlogFragment extends BaseFragment implements
-        BlogMvpView, BlogAdapter.Callback {
+public class WeatherListFragment extends BaseFragment implements
+        WeatherListMvpView, WeatherListAdapter.Callback {
 
-    private static final String TAG = "BlogFragment";
-
-    @Inject
-    BlogMvpPresenter<BlogMvpView> mPresenter;
+    private static final String TAG = "WeatherListFragment";
 
     @Inject
-    BlogAdapter mBlogAdapter;
+    WeatherListMvpPresenter<WeatherListMvpView> mPresenter;
+
+    @Inject
+    WeatherListAdapter mWeatherListAdapter;
 
     @Inject
     LinearLayoutManager mLayoutManager;
 
-    @BindView(R.id.blog_recycler_view)
+    @BindView(R.id.fragment_weather_list_recycler)
     RecyclerView mRecyclerView;
 
-    public static BlogFragment newInstance() {
+    public static WeatherListFragment newInstance() {
         Bundle args = new Bundle();
-        BlogFragment fragment = new BlogFragment();
+        WeatherListFragment fragment = new WeatherListFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -53,14 +53,14 @@ public class BlogFragment extends BaseFragment implements
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_blog, container, false);
+        View view = inflater.inflate(R.layout.fragment_weather_list, container, false);
 
         ActivityComponent component = getActivityComponent();
         if (component != null) {
             component.inject(this);
             setUnBinder(ButterKnife.bind(this, view));
             mPresenter.onAttach(this);
-            mBlogAdapter.setCallback(this);
+            mWeatherListAdapter.setCallback(this);
         }
         return view;
     }
@@ -70,19 +70,19 @@ public class BlogFragment extends BaseFragment implements
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setAdapter(mBlogAdapter);
+        mRecyclerView.setAdapter(mWeatherListAdapter);
 
         mPresenter.onViewPrepared();
     }
 
     @Override
-    public void onBlogEmptyViewRetryClick() {
+    public void onWeatherListEmptyViewRetryClick() {
 
     }
 
     @Override
-    public void updateBlog(List<BlogResponse.Blog> blogList) {
-        mBlogAdapter.addItems(blogList);
+    public void updateWeatherList(BulkCurrentWeather weatherList) {
+        mWeatherListAdapter.addItems(weatherList);
     }
 
     @Override

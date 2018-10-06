@@ -101,8 +101,8 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    ApiParameter.IdApiParameter provideIdApiParameter(String id) {
-        return new ApiParameter.IdApiParameter(id);
+    ApiParameter.IdApiParameter provideIdApiParameter() {
+        return new ApiParameter.IdApiParameter("");
     }
 
     @Provides

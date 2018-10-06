@@ -19,7 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by janisharali on 25/05/17.
+ * Created by isaiahj on 07/10/2018.
  */
 
 public class FeedActivity extends BaseActivity implements FeedMvpView {

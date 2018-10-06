@@ -21,9 +21,9 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/blog_recycler_view"
+        android:id="@+id/fragment_weather_list_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_blog_view" />
+        tools:listitem="@layout/item_weather_list_view" />
 
 </LinearLayout>

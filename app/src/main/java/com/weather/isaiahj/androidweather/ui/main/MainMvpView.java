@@ -11,25 +11,10 @@ import java.util.List;
 
 public interface MainMvpView extends MvpView {
 
-    void showAboutFragment();
+    void refreshWeatherList(List<Question> questionList);
 
-    void refreshQuestionnaire(List<Question> questionList);
+    void reloadWeatherList(List<Question> questionList);
 
-    void reloadQuestionnaire(List<Question> questionList);
+    void openWeatherDetailActivity();
 
-    void updateUserName(String currentUserName);
-
-    void updateUserEmail(String currentUserEmail);
-
-    void updateUserProfilePic(String currentUserProfilePicUrl);
-
-    void updateAppVersion();
-
-    void openMyFeedActivity();
-
-    void closeNavigationDrawer();
-
-    void lockDrawer();
-
-    void unlockDrawer();
 }

@@ -47,11 +47,6 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
     }
 
     @Override
-    public void startSyncService() {
-//        SyncService.start(this);
-    }
-
-    @Override
     protected void onDestroy() {
         mPresenter.onDetach();
         super.onDestroy();

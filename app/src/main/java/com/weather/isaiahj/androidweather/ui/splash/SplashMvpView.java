@@ -9,6 +9,4 @@ import com.weather.isaiahj.androidweather.ui.base.MvpView;
 public interface SplashMvpView extends MvpView {
 
     void openMainActivity();
-
-    void startSyncService();
 }

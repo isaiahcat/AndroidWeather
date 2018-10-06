@@ -1,4 +1,4 @@
-package com.weather.isaiahj.androidweather.ui.feed.blogs;
+package com.weather.isaiahj.androidweather.ui.main.weatherlist;
 
 import com.weather.isaiahj.androidweather.data.DataManager;
 import com.weather.isaiahj.androidweather.utils.rx.SchedulerProvider;

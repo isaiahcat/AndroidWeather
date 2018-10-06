@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
+import com.weather.isaiahj.androidweather.data.network.model.BulkCurrentWeather;
 import com.weather.isaiahj.androidweather.di.ActivityContext;
 import com.weather.isaiahj.androidweather.di.PerActivity;
 import com.weather.isaiahj.androidweather.ui.about.AboutMvpPresenter;
@@ -13,13 +14,13 @@ import com.weather.isaiahj.androidweather.ui.feed.FeedMvpPresenter;
 import com.weather.isaiahj.androidweather.ui.feed.FeedMvpView;
 import com.weather.isaiahj.androidweather.ui.feed.FeedPagerAdapter;
 import com.weather.isaiahj.androidweather.ui.feed.FeedPresenter;
-import com.weather.isaiahj.androidweather.ui.feed.blogs.BlogAdapter;
-import com.weather.isaiahj.androidweather.ui.feed.blogs.BlogMvpPresenter;
-import com.weather.isaiahj.androidweather.ui.feed.blogs.BlogMvpView;
-import com.weather.isaiahj.androidweather.ui.feed.blogs.BlogPresenter;
 import com.weather.isaiahj.androidweather.ui.main.MainMvpPresenter;
 import com.weather.isaiahj.androidweather.ui.main.MainMvpView;
 import com.weather.isaiahj.androidweather.ui.main.MainPresenter;
+import com.weather.isaiahj.androidweather.ui.main.weatherlist.WeatherListAdapter;
+import com.weather.isaiahj.androidweather.ui.main.weatherlist.WeatherListMvpPresenter;
+import com.weather.isaiahj.androidweather.ui.main.weatherlist.WeatherListMvpView;
+import com.weather.isaiahj.androidweather.ui.main.weatherlist.WeatherListPresenter;
 import com.weather.isaiahj.androidweather.ui.splash.SplashMvpPresenter;
 import com.weather.isaiahj.androidweather.ui.splash.SplashMvpView;
 import com.weather.isaiahj.androidweather.ui.splash.SplashPresenter;
@@ -93,8 +94,8 @@ public class ActivityModule {
     }
 
     @Provides
-    BlogMvpPresenter<BlogMvpView> provideBlogMvpPresenter(
-            BlogPresenter<BlogMvpView> presenter) {
+    WeatherListMvpPresenter<WeatherListMvpView> provideWeatherListMvpPresenter(
+            WeatherListPresenter<WeatherListMvpView> presenter) {
         return presenter;
     }
 
@@ -104,8 +105,8 @@ public class ActivityModule {
     }
 
     @Provides
-    BlogAdapter provideBlogAdapter() {
-        return new BlogAdapter(new ArrayList<BlogResponse.Blog>());
+    WeatherListAdapter provideWeatherListAdapter() {
+        return new WeatherListAdapter(new BulkCurrentWeather());
     }
 
     @Provides

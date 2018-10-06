@@ -112,24 +112,12 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
                 return;
             }
 
-            switch (error.getErrorCode()) {
-                case HttpsURLConnection.HTTP_UNAUTHORIZED:
-                case HttpsURLConnection.HTTP_FORBIDDEN:
-                    setUserAsLoggedOut();
-                case HttpsURLConnection.HTTP_INTERNAL_ERROR:
-                case HttpsURLConnection.HTTP_NOT_FOUND:
-                default:
-                    getMvpView().onError(apiError.getMessage());
-            }
+            getMvpView().onError(apiError.getMessage());
+
         } catch (JsonSyntaxException | NullPointerException e) {
             Log.e(TAG, "handleApiError", e);
             getMvpView().onError(R.string.api_default_error);
         }
-    }
-
-    @Override
-    public void setUserAsLoggedOut() {
-        getDataManager().setAccessToken(null);
     }
 
     public static class MvpViewNotAttachedException extends RuntimeException {

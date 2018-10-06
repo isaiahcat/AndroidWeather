@@ -53,25 +53,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
-    @BindView(R.id.drawer_view)
-    DrawerLayout mDrawer;
-
-    @BindView(R.id.navigation_view)
-    NavigationView mNavigationView;
-
-    @BindView(R.id.tv_app_version)
-    TextView mAppVersionTextView;
-
     @BindView(R.id.cards_container)
     SwipePlaceHolderView mCardsContainerView;
-
-    private TextView mNameTextView;
-
-    private TextView mEmailTextView;
-
-    private RoundedImageView mProfileImageView;
-
-    private ActionBarDrawerToggle mDrawerToggle;
 
     public static Intent getStartIntent(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -104,7 +87,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     @Override
-    public void refreshQuestionnaire(List<Question> questionList) {
+    public void refreshWeatherList(List<Question> questionList) {
         for (Question question : questionList) {
             if (question != null
                     && question.getOptionList() != null
@@ -115,8 +98,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     @Override
-    public void reloadQuestionnaire(List<Question> questionList) {
-        refreshQuestionnaire(questionList);
+    public void reloadWeatherList(List<Question> questionList) {
+        refreshWeatherList(questionList);
         ScaleAnimation animation =
                 new ScaleAnimation(
                         1.15f, 1, 1.15f, 1,
@@ -126,34 +109,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         mCardsContainerView.setAnimation(animation);
         animation.setDuration(100);
         animation.start();
-    }
-
-    @Override
-    public void updateAppVersion() {
-        String version = getString(R.string.version) + " " + BuildConfig.VERSION_NAME;
-        mAppVersionTextView.setText(version);
-    }
-
-    @Override
-    public void updateUserName(String currentUserName) {
-        mNameTextView.setText(currentUserName);
-    }
-
-    @Override
-    public void updateUserEmail(String currentUserEmail) {
-        mEmailTextView.setText(currentUserEmail);
-    }
-
-    @Override
-    public void updateUserProfilePic(String currentUserProfilePicUrl) {
-        //load profile pic url into ANImageView
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (mDrawer != null)
-            mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
     }
 
     @Override
@@ -177,31 +132,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                     .setCustomAnimations(R.anim.slide_left, R.anim.slide_right)
                     .remove(fragment)
                     .commitNow();
-            unlockDrawer();
         }
-    }
-
-    @Override
-    public void showAboutFragment() {
-        lockDrawer();
-        getSupportFragmentManager()
-                .beginTransaction()
-                .disallowAddToBackStack()
-                .setCustomAnimations(R.anim.slide_left, R.anim.slide_right)
-                .add(R.id.cl_root_view, AboutFragment.newInstance(), AboutFragment.TAG)
-                .commit();
-    }
-
-    @Override
-    public void lockDrawer() {
-        if (mDrawer != null)
-            mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-    }
-
-    @Override
-    public void unlockDrawer() {
-        if (mDrawer != null)
-            mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
     }
 
     @Override
@@ -234,26 +165,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @Override
     protected void setUp() {
         setSupportActionBar(mToolbar);
-        mDrawerToggle = new ActionBarDrawerToggle(
-                this,
-                mDrawer,
-                mToolbar,
-                R.string.open_drawer,
-                R.string.close_drawer) {
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                hideKeyboard();
-            }
-
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-            }
-        };
-        mDrawer.addDrawerListener(mDrawerToggle);
-        mDrawerToggle.syncState();
-        setupNavMenu();
         mPresenter.onNavMenuCreated();
         setupCardContainerView();
         mPresenter.onViewInitialized();
@@ -291,22 +202,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         });
     }
 
-    void setupNavMenu() {
-        View headerLayout = mNavigationView.getHeaderView(0);
-        mProfileImageView = (RoundedImageView) headerLayout.findViewById(R.id.iv_profile_pic);
-        mNameTextView = (TextView) headerLayout.findViewById(R.id.tv_name);
-        mEmailTextView = (TextView) headerLayout.findViewById(R.id.tv_email);
-    }
-
     @Override
-    public void openMyFeedActivity() {
+    public void openWeatherDetailActivity() {
         startActivity(FeedActivity.getStartIntent(this));
-    }
-
-    @Override
-    public void closeNavigationDrawer() {
-        if (mDrawer != null) {
-            mDrawer.closeDrawer(Gravity.START);
-        }
     }
 }

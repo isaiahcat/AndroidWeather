@@ -1,8 +1,8 @@
 package com.weather.isaiahj.androidweather.di.module;
 
-import com.weather.isaiahj.androidweather.ui.feed.blogs.BlogMvpPresenter;
-import com.weather.isaiahj.androidweather.ui.feed.blogs.BlogMvpView;
-import com.weather.isaiahj.androidweather.ui.feed.blogs.BlogPresenter;
+import com.weather.isaiahj.androidweather.ui.main.weatherlist.BlogMvpPresenter;
+import com.weather.isaiahj.androidweather.ui.main.weatherlist.BlogMvpView;
+import com.weather.isaiahj.androidweather.ui.main.weatherlist.BlogPresenter;
 import dagger.internal.Factory;
 import dagger.internal.Preconditions;
 import javax.annotation.Generated;

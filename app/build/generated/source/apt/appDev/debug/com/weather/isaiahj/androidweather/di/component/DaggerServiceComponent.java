@@ -1,7 +1,6 @@
 package com.weather.isaiahj.androidweather.di.component;
 
 import com.weather.isaiahj.androidweather.data.DataManager;
-import com.weather.isaiahj.androidweather.di.module.ServiceModule;
 import com.weather.isaiahj.androidweather.service.SyncService;
 import com.weather.isaiahj.androidweather.service.SyncService_MembersInjector;
 import dagger.MembersInjector;

@@ -4,9 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.weather.isaiahj.androidweather.ui.feed.blogs.BlogFragment;
-import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourceFragment;
-
 /**
  * Created by Janisharali on 25/05/2017.
  */
@@ -25,9 +22,9 @@ public class FeedPagerAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
-                return BlogFragment.newInstance();
+//                return BlogFragment.newInstance();
             case 1:
-                return OpenSourceFragment.newInstance();
+//                return OpenSourceFragment.newInstance();
             default:
                 return null;
         }

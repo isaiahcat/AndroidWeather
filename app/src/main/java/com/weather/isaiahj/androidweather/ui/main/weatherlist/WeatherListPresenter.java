@@ -1,4 +1,4 @@
-package com.weather.isaiahj.androidweather.ui.feed.blogs;
+package com.weather.isaiahj.androidweather.ui.main.weatherlist;
 
 import com.weather.isaiahj.androidweather.data.DataManager;
 import com.weather.isaiahj.androidweather.ui.base.BasePresenter;
@@ -9,16 +9,16 @@ import javax.inject.Inject;
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
- * Created by janisharali on 25/05/17.
+ * Created by isaiahj on 07/10/2018.
  */
 
-public class BlogPresenter<V extends BlogMvpView> extends BasePresenter<V>
-        implements BlogMvpPresenter<V> {
+public class WeatherListPresenter<V extends WeatherListMvpView> extends BasePresenter<V>
+        implements WeatherListMvpPresenter<V> {
 
     @Inject
-    public BlogPresenter(DataManager dataManager,
-                         SchedulerProvider schedulerProvider,
-                         CompositeDisposable compositeDisposable) {
+    public WeatherListPresenter(DataManager dataManager,
+                                SchedulerProvider schedulerProvider,
+                                CompositeDisposable compositeDisposable) {
         super(dataManager, schedulerProvider, compositeDisposable);
     }
 

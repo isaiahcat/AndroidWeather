@@ -6,17 +6,15 @@ import com.weather.isaiahj.androidweather.data.DataManager;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideAboutPresenterFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideActivityFactory;
-import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideBlogAdapterFactory;
-import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideBlogMvpPresenterFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideCompositeDisposableFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideFeedPagerAdapterFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideFeedPresenterFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideLinearLayoutManagerFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideMainPresenterFactory;
-import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideOpenSourceAdapterFactory;
-import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideOpenSourcePresenterFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideSchedulerProviderFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideSplashPresenterFactory;
+import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideWeatherListAdapterFactory;
+import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideWeatherListMvpPresenterFactory;
 import com.weather.isaiahj.androidweather.ui.about.AboutFragment;
 import com.weather.isaiahj.androidweather.ui.about.AboutFragment_MembersInjector;
 import com.weather.isaiahj.androidweather.ui.about.AboutMvpPresenter;
@@ -30,26 +28,19 @@ import com.weather.isaiahj.androidweather.ui.feed.FeedMvpView;
 import com.weather.isaiahj.androidweather.ui.feed.FeedPagerAdapter;
 import com.weather.isaiahj.androidweather.ui.feed.FeedPresenter;
 import com.weather.isaiahj.androidweather.ui.feed.FeedPresenter_Factory;
-import com.weather.isaiahj.androidweather.ui.feed.blogs.BlogAdapter;
-import com.weather.isaiahj.androidweather.ui.feed.blogs.BlogFragment;
-import com.weather.isaiahj.androidweather.ui.feed.blogs.BlogFragment_MembersInjector;
-import com.weather.isaiahj.androidweather.ui.feed.blogs.BlogMvpPresenter;
-import com.weather.isaiahj.androidweather.ui.feed.blogs.BlogMvpView;
-import com.weather.isaiahj.androidweather.ui.feed.blogs.BlogPresenter;
-import com.weather.isaiahj.androidweather.ui.feed.blogs.BlogPresenter_Factory;
-import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourceAdapter;
-import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourceFragment;
-import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourceFragment_MembersInjector;
-import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourceMvpPresenter;
-import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourceMvpView;
-import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourcePresenter;
-import com.weather.isaiahj.androidweather.ui.feed.opensource.OpenSourcePresenter_Factory;
 import com.weather.isaiahj.androidweather.ui.main.MainActivity;
 import com.weather.isaiahj.androidweather.ui.main.MainActivity_MembersInjector;
 import com.weather.isaiahj.androidweather.ui.main.MainMvpPresenter;
 import com.weather.isaiahj.androidweather.ui.main.MainMvpView;
 import com.weather.isaiahj.androidweather.ui.main.MainPresenter;
 import com.weather.isaiahj.androidweather.ui.main.MainPresenter_Factory;
+import com.weather.isaiahj.androidweather.ui.main.weatherlist.WeatherListAdapter;
+import com.weather.isaiahj.androidweather.ui.main.weatherlist.WeatherListFragment;
+import com.weather.isaiahj.androidweather.ui.main.weatherlist.WeatherListFragment_MembersInjector;
+import com.weather.isaiahj.androidweather.ui.main.weatherlist.WeatherListMvpPresenter;
+import com.weather.isaiahj.androidweather.ui.main.weatherlist.WeatherListMvpView;
+import com.weather.isaiahj.androidweather.ui.main.weatherlist.WeatherListPresenter;
+import com.weather.isaiahj.androidweather.ui.main.weatherlist.WeatherListPresenter_Factory;
 import com.weather.isaiahj.androidweather.ui.splash.SplashActivity;
 import com.weather.isaiahj.androidweather.ui.splash.SplashActivity_MembersInjector;
 import com.weather.isaiahj.androidweather.ui.splash.SplashMvpPresenter;
@@ -105,23 +96,16 @@ public final class DaggerActivityComponent implements ActivityComponent {
 
   private MembersInjector<AboutFragment> aboutFragmentMembersInjector;
 
-  private Provider<OpenSourcePresenter<OpenSourceMvpView>> openSourcePresenterProvider;
+  private Provider<WeatherListPresenter<WeatherListMvpView>> weatherListPresenterProvider;
 
-  private Provider<OpenSourceMvpPresenter<OpenSourceMvpView>> provideOpenSourcePresenterProvider;
+  private Provider<WeatherListMvpPresenter<WeatherListMvpView>>
+      provideWeatherListMvpPresenterProvider;
 
-  private Provider<OpenSourceAdapter> provideOpenSourceAdapterProvider;
+  private Provider<WeatherListAdapter> provideWeatherListAdapterProvider;
 
   private Provider<LinearLayoutManager> provideLinearLayoutManagerProvider;
 
-  private MembersInjector<OpenSourceFragment> openSourceFragmentMembersInjector;
-
-  private Provider<BlogPresenter<BlogMvpView>> blogPresenterProvider;
-
-  private Provider<BlogMvpPresenter<BlogMvpView>> provideBlogMvpPresenterProvider;
-
-  private Provider<BlogAdapter> provideBlogAdapterProvider;
-
-  private MembersInjector<BlogFragment> blogFragmentMembersInjector;
+  private MembersInjector<WeatherListFragment> weatherListFragmentMembersInjector;
 
   private DaggerActivityComponent(Builder builder) {
     assert builder != null;
@@ -219,48 +203,28 @@ public final class DaggerActivityComponent implements ActivityComponent {
     this.aboutFragmentMembersInjector =
         AboutFragment_MembersInjector.create(provideAboutPresenterProvider);
 
-    this.openSourcePresenterProvider =
-        OpenSourcePresenter_Factory.create(
-            MembersInjectors.<OpenSourcePresenter<OpenSourceMvpView>>noOp(),
+    this.weatherListPresenterProvider =
+        WeatherListPresenter_Factory.create(
+            MembersInjectors.<WeatherListPresenter<WeatherListMvpView>>noOp(),
             getDataManagerProvider,
             provideSchedulerProvider,
             provideCompositeDisposableProvider);
 
-    this.provideOpenSourcePresenterProvider =
-        ActivityModule_ProvideOpenSourcePresenterFactory.create(
-            builder.activityModule, openSourcePresenterProvider);
+    this.provideWeatherListMvpPresenterProvider =
+        ActivityModule_ProvideWeatherListMvpPresenterFactory.create(
+            builder.activityModule, weatherListPresenterProvider);
 
-    this.provideOpenSourceAdapterProvider =
-        ActivityModule_ProvideOpenSourceAdapterFactory.create(builder.activityModule);
+    this.provideWeatherListAdapterProvider =
+        ActivityModule_ProvideWeatherListAdapterFactory.create(builder.activityModule);
 
     this.provideLinearLayoutManagerProvider =
         ActivityModule_ProvideLinearLayoutManagerFactory.create(
             builder.activityModule, provideActivityProvider);
 
-    this.openSourceFragmentMembersInjector =
-        OpenSourceFragment_MembersInjector.create(
-            provideOpenSourcePresenterProvider,
-            provideOpenSourceAdapterProvider,
-            provideLinearLayoutManagerProvider);
-
-    this.blogPresenterProvider =
-        BlogPresenter_Factory.create(
-            MembersInjectors.<BlogPresenter<BlogMvpView>>noOp(),
-            getDataManagerProvider,
-            provideSchedulerProvider,
-            provideCompositeDisposableProvider);
-
-    this.provideBlogMvpPresenterProvider =
-        ActivityModule_ProvideBlogMvpPresenterFactory.create(
-            builder.activityModule, blogPresenterProvider);
-
-    this.provideBlogAdapterProvider =
-        ActivityModule_ProvideBlogAdapterFactory.create(builder.activityModule);
-
-    this.blogFragmentMembersInjector =
-        BlogFragment_MembersInjector.create(
-            provideBlogMvpPresenterProvider,
-            provideBlogAdapterProvider,
+    this.weatherListFragmentMembersInjector =
+        WeatherListFragment_MembersInjector.create(
+            provideWeatherListMvpPresenterProvider,
+            provideWeatherListAdapterProvider,
             provideLinearLayoutManagerProvider);
   }
 
@@ -285,13 +249,8 @@ public final class DaggerActivityComponent implements ActivityComponent {
   }
 
   @Override
-  public void inject(OpenSourceFragment fragment) {
-    openSourceFragmentMembersInjector.injectMembers(fragment);
-  }
-
-  @Override
-  public void inject(BlogFragment fragment) {
-    blogFragmentMembersInjector.injectMembers(fragment);
+  public void inject(WeatherListFragment fragment) {
+    weatherListFragmentMembersInjector.injectMembers(fragment);
   }
 
   public static final class Builder {

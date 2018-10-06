@@ -3,7 +3,6 @@ package com.weather.isaiahj.androidweather.ui.main;
 import com.androidnetworking.error.ANError;
 import com.weather.isaiahj.androidweather.data.DataManager;
 import com.weather.isaiahj.androidweather.data.db.model.Question;
-import com.weather.isaiahj.androidweather.data.network.model.LogoutResponse;
 import com.weather.isaiahj.androidweather.ui.base.BasePresenter;
 import com.weather.isaiahj.androidweather.utils.rx.SchedulerProvider;
 
@@ -32,48 +31,6 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
     }
 
     @Override
-    public void onDrawerOptionAboutClick() {
-        getMvpView().closeNavigationDrawer();
-        getMvpView().showAboutFragment();
-    }
-
-    @Override
-    public void onDrawerOptionLogoutClick() {
-        getMvpView().showLoading();
-
-        getCompositeDisposable().add(getDataManager().doLogoutApiCall()
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<LogoutResponse>() {
-                    @Override
-                    public void accept(LogoutResponse response) throws Exception {
-                        if (!isViewAttached()) {
-                            return;
-                        }
-
-                        getDataManager().setUserAsLoggedOut();
-                        getMvpView().hideLoading();
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        if (!isViewAttached()) {
-                            return;
-                        }
-
-                        getMvpView().hideLoading();
-
-                        // handle the login error here
-                        if (throwable instanceof ANError) {
-                            ANError anError = (ANError) throwable;
-                            handleApiError(anError);
-                        }
-                    }
-                }));
-
-    }
-
-    @Override
     public void onViewInitialized() {
         getCompositeDisposable().add(getDataManager()
                 .getAllQuestions()
@@ -87,7 +44,7 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
                         }
 
                         if (questionList != null) {
-                            getMvpView().refreshQuestionnaire(questionList);
+                            getMvpView().refreshWeatherList(questionList);
                         }
                     }
                 }));
@@ -107,38 +64,10 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
                         }
 
                         if (questionList != null) {
-                            getMvpView().reloadQuestionnaire(questionList);
+                            getMvpView().reloadWeatherList(questionList);
                         }
                     }
                 }));
     }
 
-    @Override
-    public void onNavMenuCreated() {
-        if (!isViewAttached()) {
-            return;
-        }
-        getMvpView().updateAppVersion();
-
-        final String currentUserName = getDataManager().getCurrentUserName();
-        if (currentUserName != null && !currentUserName.isEmpty()) {
-            getMvpView().updateUserName(currentUserName);
-        }
-
-        final String currentUserEmail = getDataManager().getCurrentUserEmail();
-        if (currentUserEmail != null && !currentUserEmail.isEmpty()) {
-            getMvpView().updateUserEmail(currentUserEmail);
-        }
-
-        final String profilePicUrl = getDataManager().getCurrentUserProfilePicUrl();
-        if (profilePicUrl != null && !profilePicUrl.isEmpty()) {
-            getMvpView().updateUserProfilePic(profilePicUrl);
-        }
-    }
-
-    @Override
-    public void onDrawerMyFeedClick() {
-        getMvpView().closeNavigationDrawer();
-        getMvpView().openMyFeedActivity();
-    }
 }
