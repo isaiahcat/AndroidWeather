@@ -1,5 +1,7 @@
 package com.weather.isaiahj.androidweather.ui.main.weatherlist;
 
+import android.graphics.drawable.Drawable;
+
 import com.weather.isaiahj.androidweather.data.network.model.BulkCurrentWeather;
 import com.weather.isaiahj.androidweather.ui.base.MvpView;
 
@@ -10,4 +12,6 @@ import com.weather.isaiahj.androidweather.ui.base.MvpView;
 public interface WeatherListMvpView extends MvpView {
 
     void updateWeatherList(BulkCurrentWeather weatherList);
+
+    void refreshWeatherList(Drawable refreshIcon);
 }

@@ -20,7 +20,6 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 style="@style/Toolbar"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark"
                 app:subtitleTextColor="@color/white"
                 app:title="@string/app_name"
                 app:titleTextAppearance="@style/Toolbar.TitleText"

@@ -1,5 +1,7 @@
 package com.weather.isaiahj.androidweather.ui.main.weatherlist;
 
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -30,7 +32,7 @@ import butterknife.ButterKnife;
 public class WeatherListFragment extends BaseFragment implements
         WeatherListMvpView, WeatherListAdapter.Callback {
 
-    private static final String TAG = "WeatherListFragment";
+    public static final String TAG = "WeatherListFragment";
 
     private MainActivity mMainActivity;
 
@@ -45,6 +47,8 @@ public class WeatherListFragment extends BaseFragment implements
 
     @BindView(R.id.fragment_weather_list_recycler)
     RecyclerView mRecyclerView;
+
+    private Drawable mRefreshIcon;
 
     public static WeatherListFragment newInstance() {
         Bundle args = new Bundle();
@@ -99,7 +103,14 @@ public class WeatherListFragment extends BaseFragment implements
 
     @Override
     public void updateWeatherList(BulkCurrentWeather weatherList) {
+        if (mRefreshIcon instanceof Animatable) ((Animatable) mRefreshIcon).stop();
         mWeatherListAdapter.addItems(weatherList);
+    }
+
+    @Override
+    public void refreshWeatherList(Drawable refreshIcon) {
+        mRefreshIcon = refreshIcon;
+        mPresenter.onViewPrepared();
     }
 
     @Override

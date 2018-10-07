@@ -12,7 +12,7 @@
 
     <item
         android:id="@+id/action_refresh"
-        android:icon="@drawable/avd_cut"
+        android:icon="@drawable/avd_refresh"
         android:orderInCategory="1"
         android:title="@string/refresh"
         app:showAsAction="ifRoom" />

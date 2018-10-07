@@ -123,6 +123,12 @@ public class MainActivity extends BaseActivity implements MainMvpView {
             case R.id.action_settings:
                 return true;
             case R.id.action_refresh:
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                Fragment fragment = fragmentManager.findFragmentById(R.id.list_container);
+
+                if (fragment instanceof WeatherListFragment) {
+                    ((WeatherListFragment) fragment).refreshWeatherList(drawable);
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
