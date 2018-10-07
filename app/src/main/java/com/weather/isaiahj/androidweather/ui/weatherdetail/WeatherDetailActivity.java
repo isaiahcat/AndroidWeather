@@ -133,6 +133,7 @@ public class WeatherDetailActivity extends BaseActivity implements WeatherDetail
 
     @Override
     protected void onDestroy() {
+        mRefreshIcon = null;
         mPresenter.onDetach();
         super.onDestroy();
     }

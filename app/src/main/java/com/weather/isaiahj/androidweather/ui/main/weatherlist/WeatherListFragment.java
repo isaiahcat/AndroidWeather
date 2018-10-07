@@ -115,6 +115,7 @@ public class WeatherListFragment extends BaseFragment implements
 
     @Override
     public void onDestroyView() {
+        mRefreshIcon = null;
         mPresenter.onDetach();
         super.onDestroyView();
     }
