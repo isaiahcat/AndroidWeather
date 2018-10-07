@@ -189,6 +189,8 @@ public class MainActivity extends BaseActivity implements MainMvpView, GoogleApi
                 .setFastestInterval(LOCATION_REQUEST_FAST_INTERVAL)
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
+        showMessage(R.string.checking_for_location);
+
         LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationRequest,
                 new LocationCallback() {
                     @Override

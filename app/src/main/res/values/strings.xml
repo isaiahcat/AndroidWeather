@@ -25,5 +25,6 @@
     <string name="unable_to_load_weather_data_please_try_again">Unable to load weather data.\nPlease try again.</string>
     <string name="unable_to_detect_current_location">Unable to detect current location.</string>
     <string name="click_here_to_add_current_location">Click here to add current location</string>
+    <string name="checking_for_location">Checking for location…</string>
 
 </resources>
