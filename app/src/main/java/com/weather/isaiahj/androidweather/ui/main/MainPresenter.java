@@ -2,18 +2,14 @@ package com.weather.isaiahj.androidweather.ui.main;
 
 import com.weather.isaiahj.androidweather.R;
 import com.weather.isaiahj.androidweather.data.DataManager;
-import com.weather.isaiahj.androidweather.data.db.model.Question;
 import com.weather.isaiahj.androidweather.data.network.AppApiCallback;
 import com.weather.isaiahj.androidweather.data.network.model.currentweather.CurrentWeather;
 import com.weather.isaiahj.androidweather.ui.base.BasePresenter;
 import com.weather.isaiahj.androidweather.utils.rx.SchedulerProvider;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Consumer;
 
 
 /**
@@ -34,22 +30,7 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
 
     @Override
     public void onViewInitialized() {
-        getCompositeDisposable().add(getDataManager()
-                .getAllQuestions()
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<List<Question>>() {
-                    @Override
-                    public void accept(List<Question> questionList) throws Exception {
-                        if (!isViewAttached()) {
-                            return;
-                        }
 
-                        if (questionList != null) {
-                            getMvpView().refreshWeatherList(questionList);
-                        }
-                    }
-                }));
     }
 
     @Override

@@ -16,26 +16,19 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationAvailability;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.weather.isaiahj.androidweather.R;
-import com.weather.isaiahj.androidweather.data.db.model.Question;
 import com.weather.isaiahj.androidweather.data.network.model.currentweather.CurrentWeather;
 import com.weather.isaiahj.androidweather.ui.base.BaseActivity;
 import com.weather.isaiahj.androidweather.ui.main.weatherlist.WeatherListFragment;
 import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailActivity;
-import com.weather.isaiahj.androidweather.utils.AppLogger;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -99,31 +92,6 @@ public class MainActivity extends BaseActivity implements MainMvpView, GoogleApi
             mGoogleApiClient.disconnect();
         }
         super.onStop();
-    }
-
-    @Override
-    public void refreshWeatherList(List<Question> questionList) {
-        for (Question question : questionList) {
-            if (question != null
-                    && question.getOptionList() != null
-                    && question.getOptionList().size() == 3) {
-//                mCardsContainerView.addView(new QuestionCard(question));
-            }
-        }
-    }
-
-    @Override
-    public void reloadWeatherList(List<Question> questionList) {
-        refreshWeatherList(questionList);
-        ScaleAnimation animation =
-                new ScaleAnimation(
-                        1.15f, 1, 1.15f, 1,
-                        Animation.RELATIVE_TO_SELF, 0.5f,
-                        Animation.RELATIVE_TO_SELF, 0.5f);
-
-//        mCardsContainerView.setAnimation(animation);
-        animation.setDuration(100);
-        animation.start();
     }
 
     @Override

@@ -7,11 +7,8 @@ import com.weather.isaiahj.androidweather.BuildConfig;
 import com.weather.isaiahj.androidweather.R;
 import com.weather.isaiahj.androidweather.data.AppDataManager;
 import com.weather.isaiahj.androidweather.data.DataManager;
-import com.weather.isaiahj.androidweather.data.db.AppDbHelper;
-import com.weather.isaiahj.androidweather.data.db.DbHelper;
 import com.weather.isaiahj.androidweather.data.network.ApiHeader;
 import com.weather.isaiahj.androidweather.data.network.ApiHelper;
-import com.weather.isaiahj.androidweather.data.network.ApiParameter;
 import com.weather.isaiahj.androidweather.data.network.AppApiHelper;
 import com.weather.isaiahj.androidweather.data.prefs.AppPreferencesHelper;
 import com.weather.isaiahj.androidweather.data.prefs.PreferencesHelper;
@@ -73,12 +70,6 @@ public class ApplicationModule {
     @Singleton
     DataManager provideDataManager(AppDataManager appDataManager) {
         return appDataManager;
-    }
-
-    @Provides
-    @Singleton
-    DbHelper provideDbHelper(AppDbHelper appDbHelper) {
-        return appDbHelper;
     }
 
     @Provides
