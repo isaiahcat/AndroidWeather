@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import com.weather.isaiahj.androidweather.data.DataManager;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule;
-import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideAboutPresenterFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideActivityFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideCompositeDisposableFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideFeedPresenterFactory;
@@ -14,12 +13,6 @@ import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideSchedu
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideSplashPresenterFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideWeatherListAdapterFactory;
 import com.weather.isaiahj.androidweather.di.module.ActivityModule_ProvideWeatherListMvpPresenterFactory;
-import com.weather.isaiahj.androidweather.ui.about.AboutFragment;
-import com.weather.isaiahj.androidweather.ui.about.AboutFragment_MembersInjector;
-import com.weather.isaiahj.androidweather.ui.about.AboutMvpPresenter;
-import com.weather.isaiahj.androidweather.ui.about.AboutMvpView;
-import com.weather.isaiahj.androidweather.ui.about.AboutPresenter;
-import com.weather.isaiahj.androidweather.ui.about.AboutPresenter_Factory;
 import com.weather.isaiahj.androidweather.ui.main.MainActivity;
 import com.weather.isaiahj.androidweather.ui.main.MainActivity_MembersInjector;
 import com.weather.isaiahj.androidweather.ui.main.MainMvpPresenter;
@@ -83,12 +76,6 @@ public final class DaggerActivityComponent implements ActivityComponent {
   private Provider<WeatherDetailMvpPresenter<WeatherDetailMvpView>> provideFeedPresenterProvider;
 
   private MembersInjector<WeatherDetailActivity> weatherDetailActivityMembersInjector;
-
-  private Provider<AboutPresenter<AboutMvpView>> aboutPresenterProvider;
-
-  private Provider<AboutMvpPresenter<AboutMvpView>> provideAboutPresenterProvider;
-
-  private MembersInjector<AboutFragment> aboutFragmentMembersInjector;
 
   private Provider<WeatherListPresenter<WeatherListMvpView>> weatherListPresenterProvider;
 
@@ -177,20 +164,6 @@ public final class DaggerActivityComponent implements ActivityComponent {
     this.weatherDetailActivityMembersInjector =
         WeatherDetailActivity_MembersInjector.create(provideFeedPresenterProvider);
 
-    this.aboutPresenterProvider =
-        AboutPresenter_Factory.create(
-            MembersInjectors.<AboutPresenter<AboutMvpView>>noOp(),
-            getDataManagerProvider,
-            provideSchedulerProvider,
-            provideCompositeDisposableProvider);
-
-    this.provideAboutPresenterProvider =
-        ActivityModule_ProvideAboutPresenterFactory.create(
-            builder.activityModule, aboutPresenterProvider);
-
-    this.aboutFragmentMembersInjector =
-        AboutFragment_MembersInjector.create(provideAboutPresenterProvider);
-
     this.weatherListPresenterProvider =
         WeatherListPresenter_Factory.create(
             MembersInjectors.<WeatherListPresenter<WeatherListMvpView>>noOp(),
@@ -232,11 +205,6 @@ public final class DaggerActivityComponent implements ActivityComponent {
   @Override
   public void inject(WeatherDetailActivity activity) {
     weatherDetailActivityMembersInjector.injectMembers(activity);
-  }
-
-  @Override
-  public void inject(AboutFragment fragment) {
-    aboutFragmentMembersInjector.injectMembers(fragment);
   }
 
   @Override

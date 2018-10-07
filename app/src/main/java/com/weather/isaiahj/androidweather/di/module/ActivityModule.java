@@ -7,9 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import com.weather.isaiahj.androidweather.data.network.model.BulkCurrentWeather;
 import com.weather.isaiahj.androidweather.di.ActivityContext;
 import com.weather.isaiahj.androidweather.di.PerActivity;
-import com.weather.isaiahj.androidweather.ui.about.AboutMvpPresenter;
-import com.weather.isaiahj.androidweather.ui.about.AboutMvpView;
-import com.weather.isaiahj.androidweather.ui.about.AboutPresenter;
 import com.weather.isaiahj.androidweather.ui.main.MainMvpPresenter;
 import com.weather.isaiahj.androidweather.ui.main.MainMvpView;
 import com.weather.isaiahj.androidweather.ui.main.MainPresenter;
@@ -68,12 +65,6 @@ public class ActivityModule {
     @PerActivity
     SplashMvpPresenter<SplashMvpView> provideSplashPresenter(
             SplashPresenter<SplashMvpView> presenter) {
-        return presenter;
-    }
-
-    @Provides
-    AboutMvpPresenter<AboutMvpView> provideAboutPresenter(
-            AboutPresenter<AboutMvpView> presenter) {
         return presenter;
     }
 

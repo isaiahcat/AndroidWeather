@@ -11,10 +11,9 @@ import android.view.animation.ScaleAnimation;
 import com.weather.isaiahj.androidweather.R;
 import com.weather.isaiahj.androidweather.data.db.model.Question;
 import com.weather.isaiahj.androidweather.data.network.model.currentweather.CurrentWeather;
-import com.weather.isaiahj.androidweather.ui.about.AboutFragment;
 import com.weather.isaiahj.androidweather.ui.base.BaseActivity;
-import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailActivity;
 import com.weather.isaiahj.androidweather.ui.main.weatherlist.WeatherListFragment;
+import com.weather.isaiahj.androidweather.ui.weatherdetail.WeatherDetailActivity;
 
 import java.util.List;
 
@@ -47,17 +46,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         mPresenter.onAttach(this);
 
         setUp();
-    }
-
-    @Override
-    public void onBackPressed() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment fragment = fragmentManager.findFragmentByTag(AboutFragment.TAG);
-        if (fragment == null) {
-            super.onBackPressed();
-        } else {
-            onFragmentDetached(AboutFragment.TAG);
-        }
     }
 
     @Override
