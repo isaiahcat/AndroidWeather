@@ -7,8 +7,6 @@ import com.weather.isaiahj.androidweather.BuildConfig;
 import com.weather.isaiahj.androidweather.R;
 import com.weather.isaiahj.androidweather.data.AppDataManager;
 import com.weather.isaiahj.androidweather.data.DataManager;
-import com.weather.isaiahj.androidweather.data.db.AppDbHelper;
-import com.weather.isaiahj.androidweather.data.db.DbHelper;
 import com.weather.isaiahj.androidweather.data.network.ApiHeader;
 import com.weather.isaiahj.androidweather.data.network.ApiHelper;
 import com.weather.isaiahj.androidweather.data.network.AppApiHelper;
@@ -77,12 +75,6 @@ public class ApplicationTestModule {
 
     @Provides
     @Singleton
-    DbHelper provideDbHelper(AppDbHelper appDbHelper) {
-        return appDbHelper;
-    }
-
-    @Provides
-    @Singleton
     PreferencesHelper providePreferencesHelper(AppPreferencesHelper appPreferencesHelper) {
         return appPreferencesHelper;
     }
@@ -95,19 +87,15 @@ public class ApplicationTestModule {
 
     @Provides
     @Singleton
-    ApiHeader.ProtectedApiHeader provideProtectedApiHeader(@ApiInfo String apiKey,
-                                                           PreferencesHelper preferencesHelper) {
-        return new ApiHeader.ProtectedApiHeader(
-                apiKey,
-                preferencesHelper.getCurrentUserId(),
-                preferencesHelper.getAccessToken());
+    ApiHeader.PublicApiHeader providePublicApiHeader() {
+        return new ApiHeader.PublicApiHeader(BuildConfig.API_KEY);
     }
 
     @Provides
     @Singleton
     CalligraphyConfig provideCalligraphyDefaultConfig() {
         return new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/source-sans-pro/SourceSansPro-Regular.ttf")
+                .setDefaultFontPath("fonts/opensans/OpenSans-Regular.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build();
     }
