@@ -32,13 +32,14 @@ public class WeatherListPresenter<V extends WeatherListMvpView> extends BasePres
                 super.onSuccess(response);
 
                 getMvpView().updateWeatherList((BulkCurrentWeather) response);
+                getDataManager().setBulkCurrentWeather((BulkCurrentWeather) response);
             }
 
             @Override
             public void onFailure(Throwable t) {
                 super.onFailure(t);
 
-                getMvpView().updateWeatherList(null);
+                getMvpView().updateWeatherList(getDataManager().getBulkCurrentWeather());
             }
         });
     }

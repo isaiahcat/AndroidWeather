@@ -72,4 +72,14 @@ public class AppDataManager implements DataManager {
         mPreferencesHelper.addCurrentCityId(cityId);
     }
 
+    @Override
+    public void setBulkCurrentWeather(BulkCurrentWeather bulkCurrentWeather) {
+        mPreferencesHelper.setBulkCurrentWeather(bulkCurrentWeather);
+    }
+
+    @Override
+    public BulkCurrentWeather getBulkCurrentWeather() {
+        return mPreferencesHelper.getBulkCurrentWeather();
+    }
+
 }
