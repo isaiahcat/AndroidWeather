@@ -6,13 +6,9 @@
     <string name="transition_weather">transition_weather</string>
     <string name="transition_temperature">transition_temperature</string>
 
-    <!--Toolbar menus-->
-    <string name="clear">Clear</string>
-    <string name="cut">Cut</string>
-    <string name="copy">Copy</string>
-    <string name="paste">Paste</string>
-    <string name="delete">Delete</string>
-    <string name="share">Share</string>
+    <!--toolbar menus-->
+    <string name="settings">Settings</string>
+    <string name="refresh">Refresh</string>
 
     <!--Drawer-->
     <string name="open_drawer">Drawer Open</string>

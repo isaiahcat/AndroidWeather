@@ -7,7 +7,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import butterknife.Unbinder;
 import butterknife.internal.Utils;
-import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.weather.isaiahj.androidweather.R;
 import java.lang.IllegalStateException;
 import java.lang.Override;
@@ -25,7 +24,6 @@ public class MainActivity_ViewBinding implements Unbinder {
     this.target = target;
 
     target.mToolbar = Utils.findRequiredViewAsType(source, R.id.toolbar, "field 'mToolbar'", Toolbar.class);
-    target.mCardsContainerView = Utils.findRequiredViewAsType(source, R.id.cards_container, "field 'mCardsContainerView'", SwipePlaceHolderView.class);
   }
 
   @Override
@@ -36,6 +34,5 @@ public class MainActivity_ViewBinding implements Unbinder {
     this.target = null;
 
     target.mToolbar = null;
-    target.mCardsContainerView = null;
   }
 }

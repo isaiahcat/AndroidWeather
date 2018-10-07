@@ -1764,6 +1764,10 @@
         "source": "/Users/Guest/Desktop/AndroidWeather/app/src/main/res/drawable/ic_rss_symbol.xml"
     },
     {
+        "merged": "/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/res/merged/appDev/debug/menu_menu_main.xml.flat",
+        "source": "/Users/Guest/Desktop/AndroidWeather/app/src/main/res/menu/menu_main.xml"
+    },
+    {
         "merged": "/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/res/merged/appDev/debug/drawable_button_positive_text_drawable.xml.flat",
         "source": "/Users/Guest/Desktop/AndroidWeather/app/src/main/res/drawable/button_positive_text_drawable.xml"
     },
