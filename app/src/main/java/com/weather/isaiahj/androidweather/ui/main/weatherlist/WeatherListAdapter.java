@@ -130,7 +130,6 @@ public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                     public void onClick(View v) {
                         if (mCallback != null) {
                             mCallback.onWeatherListItemClick(currentWeather,
-                                    ViewUtils.getSharedElementPair(cardView),
                                     ViewUtils.getSharedElementPair(locationTextView),
                                     ViewUtils.getSharedElementPair(weatherTextView),
                                     ViewUtils.getSharedElementPair(temperatureTextView));

@@ -12,6 +12,7 @@ public final class BuildConfig {
   public static final String VERSION_NAME = "1.0.0";
   // Fields from build type: debug
   public static final String BASE_URL = "http://api.openweathermap.org";
+  public static final String ICONS_URL = "http://openweathermap.org";
   // Fields from product flavor: appDev
   public static final String API_KEY = "fd658f8730fe62c0e07d38dcfd23aac0";
 }

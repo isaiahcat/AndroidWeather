@@ -4,9 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.weather.isaiahj.androidweather.R;
+import com.weather.isaiahj.androidweather.data.network.ApiEndPoint;
 import com.weather.isaiahj.androidweather.data.network.model.currentweather.CurrentWeather;
 import com.weather.isaiahj.androidweather.ui.base.BaseActivity;
 import com.weather.isaiahj.androidweather.utils.StringUtils;
@@ -27,6 +30,9 @@ public class WeatherDetailActivity extends BaseActivity implements WeatherDetail
     @Inject
     WeatherDetailMvpPresenter<WeatherDetailMvpView> mPresenter;
 
+    @BindView(R.id.icon_image_view)
+    ImageView mIconImageView;
+
     @BindView(R.id.location_text_view)
     TextView mLocationTextView;
 
@@ -35,6 +41,9 @@ public class WeatherDetailActivity extends BaseActivity implements WeatherDetail
 
     @BindView(R.id.temperature_text_view)
     TextView mTemperatureTextView;
+
+    @BindView(R.id.details_text_view)
+    TextView mDetailsTextView;
 
     private CurrentWeather mCurrentWeather;
 
@@ -65,6 +74,13 @@ public class WeatherDetailActivity extends BaseActivity implements WeatherDetail
         mWeatherTextView.setText(StringUtils.getFormattedWeatherDescription(mCurrentWeather));
 
         mTemperatureTextView.setText(StringUtils.getFormattedWeatherTemperature(mCurrentWeather));
+
+        mDetailsTextView.setText(StringUtils.getFormattedWeatherDetails(mCurrentWeather));
+
+        Glide.with(WeatherDetailActivity.this)
+                .load(ApiEndPoint.getEndpointForWeatherIcons(mCurrentWeather))
+                .fitCenter()
+                .into(mIconImageView);
     }
 
     @Override
