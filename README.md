@@ -1,8 +1,5 @@
-# Android MVP Architecture: Sample App
-[![Mindorks](https://img.shields.io/badge/mindorks-opensource-blue.svg)](https://mindorks.com/open-source-projects)
-[![Mindorks Community](https://img.shields.io/badge/join-community-blue.svg)](https://mindorks.com/join-community)
+# Android Weather: Sample App
 
-This repository contains a detailed sample app that implements MVP architecture using Dagger2, GreenDao, RxJava, FastAndroidNetworking, PlaceHolderView and AndroidDebugDatabase
 <p align="center">
   <img src="https://janishar.github.io/images/mvp-app-pics/mvp-login.png" width="250">
   <img src="https://janishar.github.io/images/mvp-app-pics/main-view.png" width="250">
@@ -18,67 +15,53 @@ This repository contains a detailed sample app that implements MVP architecture 
 <br>
 <br>
 
-# Architecture Blueprint
-![Blueprint](https://janishar.github.io/images/mvp-app-pics/mvp-arch.png)
-<br>
+### Overview
+Application shows weather information from [OpenWeatherMap](https://openweathermap.org/api)
 
-# Project Structure
-![Structure](https://janishar.github.io/images/mvp-app-pics/mvp-project-structure-diagram.png)
-<br>
+This application has 3 screens
+1. Splash
+- Shows logo for 2 seconds
+- Different splash screen for dev and production
+2. WeatherList (Using Fragment for List portion)
+- List of weather information from London, Prague, and San Francisco
+- Card shows location, weather description, and average temperature
+- Shows shared element transition going to WeatherDetail upon clicking card
+- AnimatedVectorDrawable refresh button on Action Bar starts spinning onClick and stops when refresh is finished
+- Option to add current location to list of information, asks for Location permission onClick
+3. WeatherDetail
+- Detailed weather information for selected location
+- Shows weather icon, weather description, average temperature, temperature range, etc.
+- AnimatedVectorDrawable refresh button on Action Bar starts spinning onClick and stops when refresh is finished
+- Shows shared element transition when pressing back button to go back to WeatherList
 
-# Read the below listed articles. They describe the MVP concepts and the Project structure.
-1. [MVP: Part 1](https://blog.mindorks.com/essential-guide-for-designing-your-android-app-architecture-mvp-part-1-74efaf1cda40#.lkml1yggq)
-2. [MVP: Part 2](https://blog.mindorks.com/essential-guide-for-designing-your-android-app-architecture-mvp-part-2-b2ac6f3f9637#.dge0wl8rl)
-3. [MVP: Part 3](https://blog.mindorks.com/essential-guide-for-designing-your-android-app-architecture-mvp-part-3-dialog-viewpager-and-7bdfab86aabb)
-4. [Extension with Interactors and Repositories](https://blog.mindorks.com/android-mvp-architecture-extension-with-interactors-and-repositories-bd4b51972339)
+Additional Notes
+- Application versionName is 3.3 with versionCode 3333
+- Offline mode using SharedPrefrences and Gson library
+- Third-party libraries listed below
+- Used Git and GitHub for version control
+- Analytics with Fabric.io Crashlytics
+- With some unit testing based on MVP boilerplate
+- Support both tablet and phone
 
-#### The app has following packages:
-1. **data**: It contains all the data accessing and manipulating components.
-2. **di**: Dependency providing classes using Dagger2.
-3. **ui**: View classes along with their corresponding Presenters.
-4. **service**: Services for the application.
-5. **utils**: Utility classes.
-
-#### Classes have been designed in such a way that it could be inherited and maximize the code reuse.
+### Architecture and Boilerplate reference:
+Mindorks MVP Boilerplate: https://github.com/MindorksOpenSource/android-mvp-architecture
 
 ### Library reference resources:
 1. RxJava2: https://github.com/amitshekhariitbhu/RxJava2-Android-Samples
 2. Dagger2: https://github.com/MindorksOpenSource/android-dagger2-example
-3. FastAndroidNetworking: https://github.com/amitshekhariitbhu/Fast-Android-Networking
-4. PlaceHolderView: https://github.com/janishar/PlaceHolderView
-5. AndroidDebugDatabase: https://github.com/amitshekhariitbhu/Android-Debug-Database
+3. Gson: https://github.com/google/gson
+4. FastAndroidNetworking: https://github.com/amitshekhariitbhu/Fast-Android-Networking
+5. PlaceHolderView: https://github.com/janishar/PlaceHolderView
 6. Calligraphy: https://github.com/chrisjenx/Calligraphy
-7. GreenDao: http://greenrobot.org/greendao/
-8. ButterKnife: http://jakewharton.github.io/butterknife/
-
-### Concept reference resources:
-1. [Introduction to Dagger 2: Part 1](https://blog.mindorks.com/introduction-to-dagger-2-using-dependency-injection-in-android-part-1-223289c2a01b#.ki6nt86l6)
-2. [Introduction to Dagger 2: Part 2](https://blog.mindorks.com/introduction-to-dagger-2-using-dependency-injection-in-android-part-2-b55857911bcd#.mkpzyk8sa)
-3. [Android Dagger2: Critical things to know before you implement](https://blog.mindorks.com/android-dagger2-critical-things-to-know-before-you-implement-275663aecc3e#.bskiz1879)
-4. [The Best Android Networking Library for Fast and Easy Networking](https://blog.mindorks.com/simple-and-fast-android-networking-19ed860d1455#.cyzrve85o)
-5. [RxJava + Fast Android Networking](https://blog.mindorks.com/rxjava-fast-android-networking-6e3d90ee4387#.7hjoex22m)
-6. [Migrating from RxJava 1.0 to RxJava 2.0 and Learn RxJava by Examples](https://blog.mindorks.com/migrating-from-rxjava1-to-rxjava2-5dac0a94b4aa#.3lg46kora)
-7. [Android Tinder Swipe View Example](https://blog.mindorks.com/android-tinder-swipe-view-example-3eca9b0d4794#.u7i7jbbvy)
-8. [Debugging Android Databases And Shared Preferences In The Easiest Way](https://blog.mindorks.com/debugging-android-databases-and-shared-preferences-in-the-easiest-way-e5f705dfc06b#.pxw0hvnws)
-9. [RxJava Anatomy: What is RxJava, how RxJava is designed, and how RxJava works.](https://blog.mindorks.com/rxjava-anatomy-what-is-rxjava-how-rxjava-is-designed-and-how-rxjava-works-d357b3aca586)
-10. [Powerful Android ORM: greenDAO 3 Tutorial](https://mindorks.com/blog/powerful-android-orm-greendao-3-tutorial)
-
-### Playstore App of Mindorks build on this MVP architecture
-[Correctify: An English Editing and Learning app](https://play.google.com/store/apps/details?id=com.mindorks.correctify)
-
-### Looking for MVVM Architecture - [Check here](https://github.com/MindorksOpenSource/android-mvvm-architecture)
-
-### Looking for Kotlin MVP Architecture - [Check here](https://github.com/MindorksOpenSource/android-kotlin-mvp-architecture)
-
-### Mindorks open source projects
-[Check out Mindorks awesome open source projects here](https://mindorks.com/open-source-projects)
-
-### How do I use this project?
-This is a boilerplate project aimed to help bootstrap new Android MVP Applications. Feel free to fork this application or use [AndroidStarters](http://androidstarters.com/) to create new app using this boilerplate.
+7. ButterKnife: http://jakewharton.github.io/butterknife/
+8. Fabric.io: https://fabric.io/kits/android/crashlytics
+9. Google Play Location: https://github.com/googlesamples/android-play-location
+10. Glide: https://github.com/bumptech/glide
+11. Timber: https://github.com/JakeWharton/timber
 
 ### License
 ```
-   Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
+   Copyright (C) 2018 ISAIAH JOSEPHINE CATIMPO
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -92,7 +75,3 @@ This is a boilerplate project aimed to help bootstrap new Android MVP Applicatio
    See the License for the specific language governing permissions and
    limitations under the License.
 ```
-
-### Contributing to Android MVP Architecture
-All pull requests are welcome, make sure to follow the [contribution guidelines](CONTRIBUTING.md)
-when you submit pull request.
