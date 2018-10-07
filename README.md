@@ -1,11 +1,11 @@
 # Android Weather: Sample App
 
 <p align="center">
-  <img src="https://github.com/ijbcatimpo/AndroidWeather/tree/master/images/splash_prod.jpg" width="200">
-  <img src="https://github.com/ijbcatimpo/AndroidWeather/tree/master/images/splash_dev.jpg" width="200">
-  <img src="https://github.com/ijbcatimpo/AndroidWeather/tree/master/images/weather_list.jpg" width="200">
-  <img src="https://github.com/ijbcatimpo/AndroidWeather/tree/master/images/location_permission.jpg" width="200">
-  <img src="https://github.com/ijbcatimpo/AndroidWeather/tree/master/images/weather_detail.jpg" width="200">
+  <img src="https://github.com/ijbcatimpo/AndroidWeather/blob/master/images/splash_prod.jpg" width="180">
+  <img src="https://github.com/ijbcatimpo/AndroidWeather/blob/master/images/splash_dev.jpg" width="180">
+  <img src="https://github.com/ijbcatimpo/AndroidWeather/blob/master/images/weather_list.jpg" width="180">
+  <img src="https://github.com/ijbcatimpo/AndroidWeather/blob/master/images/location_permission.jpg" width="180">
+  <img src="https://github.com/ijbcatimpo/AndroidWeather/blob/master/images/weather_detail.jpg" width="180">
 </p>
 
 ### Overview
