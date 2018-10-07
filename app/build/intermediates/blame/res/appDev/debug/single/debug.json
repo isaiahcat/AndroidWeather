@@ -1808,6 +1808,10 @@
         "source": "/Users/Guest/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/31d74d7f196d2154560a584d962dede1/res/layout/support_simple_spinner_dropdown_item.xml"
     },
     {
+        "merged": "/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/res/merged/appDev/debug/layout_content_weather_detail.xml.flat",
+        "source": "/Users/Guest/Desktop/AndroidWeather/app/src/main/res/layout/content_weather_detail.xml"
+    },
+    {
         "merged": "/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/res/merged/appDev/debug/drawable-hdpi-v4_abc_textfield_default_mtrl_alpha.9.png.flat",
         "source": "/Users/Guest/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/31d74d7f196d2154560a584d962dede1/res/drawable-hdpi-v4/abc_textfield_default_mtrl_alpha.9.png"
     },
