@@ -1,4 +1,0 @@
-#Sun Oct 07 20:16:16 PHT 2018
-base.0=/Users/Guest/Desktop/AndroidWeather/app/build/intermediates/transforms/dexMerger/appDev/debug/6
-path.0=classes.dex
-renamed.0=classes.dex

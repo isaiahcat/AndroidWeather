@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/Guest/Desktop/AndroidWeather/app/src/main/jniLibs"/></dataSet><dataSet config="appDev"><source path="/Users/Guest/Desktop/AndroidWeather/app/src/appDev/jniLibs"/></dataSet><dataSet config="debug"><source path="/Users/Guest/Desktop/AndroidWeather/app/src/debug/jniLibs"/></dataSet><dataSet config="appDevDebug"><source path="/Users/Guest/Desktop/AndroidWeather/app/src/appDevDebug/jniLibs"/></dataSet></merger>
