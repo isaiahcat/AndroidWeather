@@ -122,8 +122,6 @@ public class WeatherDetailActivity extends BaseActivity implements WeatherDetail
             ((Animatable) drawable).start();
         }
         switch (item.getItemId()) {
-            case R.id.action_settings:
-                return true;
             case R.id.action_refresh:
                 mRefreshIcon = drawable;
                 mPresenter.onViewRefreshed(mCurrentWeather.getId().toString());

@@ -5,13 +5,6 @@
     tools:context=".MainActivity">
 
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/settings"
-        android:icon="@drawable/ic_more_white_24dp"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/action_refresh"
         android:icon="@drawable/avd_refresh"
         android:orderInCategory="1"

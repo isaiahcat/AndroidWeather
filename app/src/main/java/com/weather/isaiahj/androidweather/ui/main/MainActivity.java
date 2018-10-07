@@ -132,8 +132,6 @@ public class MainActivity extends BaseActivity implements MainMvpView, GoogleApi
             ((Animatable) drawable).start();
         }
         switch (item.getItemId()) {
-            case R.id.action_settings:
-                return true;
             case R.id.action_refresh:
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 Fragment fragment = fragmentManager.findFragmentById(R.id.list_container);

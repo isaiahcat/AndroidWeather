@@ -7,7 +7,6 @@
     <string name="transition_temperature">transition_temperature</string>
 
     <!--toolbar menus-->
-    <string name="settings">Settings</string>
     <string name="refresh">Refresh</string>
 
     <!--splash screen-->
