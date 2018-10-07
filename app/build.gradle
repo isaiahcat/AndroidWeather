@@ -75,7 +75,7 @@ dependencies {
     implementation "com.android.support:animated-vector-drawable:$rootProject.supportLibraryVersion"
 
     // google play services
-    implementation "com.google.android.gms:play-services:$rootProject.googlePlayServicesVersion"
+    implementation "com.google.android.gms:play-services-location:$rootProject.googlePlayServicesVersion"
 
     // font
     implementation "uk.co.chrisjenx:calligraphy:$rootProject.calligraphyVersion"

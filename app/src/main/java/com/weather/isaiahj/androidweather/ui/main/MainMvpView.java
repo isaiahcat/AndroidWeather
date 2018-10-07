@@ -20,6 +20,8 @@ public interface MainMvpView extends MvpView {
 
     void reloadWeatherList(List<Question> questionList);
 
+    void setupWeatherListContainerView();
+
     void openWeatherDetailActivity(CurrentWeather currentWeather, Bundle sharedElementBundle);
 
 }

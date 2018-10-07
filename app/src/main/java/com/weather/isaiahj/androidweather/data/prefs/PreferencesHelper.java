@@ -7,4 +7,6 @@ package com.weather.isaiahj.androidweather.data.prefs;
 public interface PreferencesHelper {
 
     String getCityIds();
+
+    void addCurrentCityId(String cityId);
 }

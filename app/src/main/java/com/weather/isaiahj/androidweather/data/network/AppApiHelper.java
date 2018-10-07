@@ -32,7 +32,17 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
-    public Observable<CurrentWeather> doGetCurrentWeatherDataForCityId(String cityId) {
+    public Observable<CurrentWeather> doGetCurrentWeatherByCoords(double lat, double lon) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.ENDPOINT_CURRENT_WEATHER)
+                .addQueryParameter(mApiHeader.getPublicApiHeader())
+                .addQueryParameter(mApiParameter.getLatApiParameter(lat))
+                .addQueryParameter(mApiParameter.getLonApiParameter(lon))
+                .build()
+                .getObjectObservable(CurrentWeather.class);
+    }
+
+    @Override
+    public Observable<CurrentWeather> doGetCurrentWeatherByCityId(String cityId) {
         return Rx2AndroidNetworking.get(ApiEndPoint.ENDPOINT_CURRENT_WEATHER)
                 .addQueryParameter(mApiHeader.getPublicApiHeader())
                 .addQueryParameter(mApiParameter.getIdApiParameter(cityId))

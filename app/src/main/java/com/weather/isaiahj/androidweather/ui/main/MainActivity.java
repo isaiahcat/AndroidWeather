@@ -1,27 +1,18 @@
 package com.weather.isaiahj.androidweather.ui.main;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
-import android.location.Location;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationServices;
 import com.weather.isaiahj.androidweather.R;
 import com.weather.isaiahj.androidweather.data.db.model.Question;
 import com.weather.isaiahj.androidweather.data.network.model.currentweather.CurrentWeather;
@@ -36,24 +27,17 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static android.provider.UserDictionary.Words.APP_ID;
-
 /**
  * Created by isaiahj on 05/10/2018.
  */
 
-public class MainActivity extends BaseActivity implements MainMvpView,
-        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
-
-    private static final int PERMISSION_ACCESS_COARSE_LOCATION = 100;
+public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Inject
     MainMvpPresenter<MainMvpView> mPresenter;
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
-
-    private GoogleApiClient mGoogleApiClient;
 
     public static Intent getStartIntent(Context context) {
         return new Intent(context, MainActivity.class);
@@ -70,22 +54,7 @@ public class MainActivity extends BaseActivity implements MainMvpView,
 
         mPresenter.onAttach(this);
 
-        mGoogleApiClient = new GoogleApiClient.Builder(this, this, this)
-                .addApi(LocationServices.API).build();
-
         setUp();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (mGoogleApiClient != null) mGoogleApiClient.connect();
-    }
-
-    @Override
-    protected void onStop() {
-        mGoogleApiClient.disconnect();
-        super.onStop();
     }
 
     @Override
@@ -173,7 +142,8 @@ public class MainActivity extends BaseActivity implements MainMvpView,
         mPresenter.onViewInitialized();
     }
 
-    private void setupWeatherListContainerView() {
+    @Override
+    public void setupWeatherListContainerView() {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.list_container, WeatherListFragment.newInstance())
@@ -188,46 +158,6 @@ public class MainActivity extends BaseActivity implements MainMvpView,
 
     @Override
     public void addCurrentLocation() {
-        if (ContextCompat.checkSelfPermission(MainActivity.this,
-                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(MainActivity.this, new String[]{
-                    Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_ACCESS_COARSE_LOCATION);
-        }
-    }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case PERMISSION_ACCESS_COARSE_LOCATION:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    mGoogleApiClient.connect();
-                } else {
-                    onError(R.string.required_location);
-                }
-                break;
-        }
-    }
-
-    @Override
-    public void onConnected(Bundle bundle) {
-        if (ContextCompat.checkSelfPermission(MainActivity.this,
-                Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            Location location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-
-            if (location != null) {
-                double lat = location.getLatitude(), lon = location.getLongitude();
-
-            }
-        }
-    }
-
-    @Override
-    public void onConnectionSuspended(int i) {
-
-    }
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        mGoogleApiClient.reconnect();
     }
 }

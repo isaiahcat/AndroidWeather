@@ -30,7 +30,7 @@ public class WeatherDetailPresenter<V extends WeatherDetailMvpView> extends Base
 
     @Override
     public void onViewRefreshed(String cityId) {
-        doApiCallForResponse(getDataManager().doGetCurrentWeatherDataForCityId(cityId), new AppApiCallback() {
+        doApiCallForResponse(getDataManager().doGetCurrentWeatherByCityId(cityId), new AppApiCallback() {
             @Override
             public void onSuccess(Object response) {
                 super.onSuccess(response);

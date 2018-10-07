@@ -104,7 +104,7 @@ public class WeatherDetailActivity extends BaseActivity implements WeatherDetail
         Glide.with(WeatherDetailActivity.this)
                 .load(ApiEndPoint.getEndpointForWeatherIcons(mCurrentWeather))
                 .fitCenter()
-                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .diskCacheStrategy(DiskCacheStrategy.RESULT)
                 .into(mIconImageView);
     }
 

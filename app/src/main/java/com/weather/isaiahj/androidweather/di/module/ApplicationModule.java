@@ -101,12 +101,6 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    ApiParameter.IdApiParameter provideIdApiParameter() {
-        return new ApiParameter.IdApiParameter("");
-    }
-
-    @Provides
-    @Singleton
     CalligraphyConfig provideCalligraphyDefaultConfig() {
         return new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/opensans/OpenSans-Regular.ttf")

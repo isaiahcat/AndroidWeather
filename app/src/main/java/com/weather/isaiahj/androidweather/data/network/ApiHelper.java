@@ -14,7 +14,9 @@ public interface ApiHelper {
 
     ApiHeader getApiHeader();
 
-    Observable<CurrentWeather> doGetCurrentWeatherDataForCityId(String cityId);
+    Observable<CurrentWeather> doGetCurrentWeatherByCoords(double lat, double lon);
+
+    Observable<CurrentWeather> doGetCurrentWeatherByCityId(String cityId);
 
     Observable<BulkCurrentWeather> doGetBulkCurrentWeatherData(String cityIds);
 

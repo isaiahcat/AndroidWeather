@@ -70,7 +70,7 @@ public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     @Override
     public int getItemCount() {
-        return hasItems() ? ITEM_COUNT_FILLED : ITEM_COUNT_EMPTY;
+        return mIsInitialLoad || hasItems() ? ITEM_COUNT_FILLED : ITEM_COUNT_EMPTY;
     }
 
     public void addItems(BulkCurrentWeather weatherList) {

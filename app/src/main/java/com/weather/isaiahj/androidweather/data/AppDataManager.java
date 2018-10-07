@@ -61,8 +61,13 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Observable<CurrentWeather> doGetCurrentWeatherDataForCityId(String cityId) {
-        return mApiHelper.doGetCurrentWeatherDataForCityId(cityId);
+    public Observable<CurrentWeather> doGetCurrentWeatherByCoords(double lat, double lon) {
+        return mApiHelper.doGetCurrentWeatherByCoords(lat, lon);
+    }
+
+    @Override
+    public Observable<CurrentWeather> doGetCurrentWeatherByCityId(String cityId) {
+        return mApiHelper.doGetCurrentWeatherByCityId(cityId);
     }
 
     @Override
@@ -78,6 +83,11 @@ public class AppDataManager implements DataManager {
     @Override
     public String getCityIds() {
         return mPreferencesHelper.getCityIds();
+    }
+
+    @Override
+    public void addCurrentCityId(String cityId) {
+        mPreferencesHelper.addCurrentCityId(cityId);
     }
 
     @Override

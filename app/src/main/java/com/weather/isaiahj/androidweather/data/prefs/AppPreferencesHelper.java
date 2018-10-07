@@ -36,4 +36,9 @@ public class AppPreferencesHelper implements PreferencesHelper {
         return mPrefs.getString(PREF_CITY_IDS, "");
     }
 
+    @Override
+    public void addCurrentCityId(String cityId) {
+        mPrefs.edit().putString(PREF_CITY_IDS, getCityIds() + "," + cityId).apply();
+    }
+
 }

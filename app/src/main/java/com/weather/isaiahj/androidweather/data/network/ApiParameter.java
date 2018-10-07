@@ -14,15 +14,21 @@ import javax.inject.Singleton;
 @Singleton
 public class ApiParameter {
 
-    private IdApiParameter mIdApiParameter;
-
     @Inject
-    public ApiParameter(IdApiParameter idApiParameter) {
-        mIdApiParameter = idApiParameter;
+    public ApiParameter() {
+
     }
 
     public IdApiParameter getIdApiParameter(String id) {
         return new IdApiParameter(id);
+    }
+
+    public LatApiParameter getLatApiParameter(double lat) {
+        return new LatApiParameter(lat);
+    }
+
+    public LonApiParameter getLonApiParameter(double lon) {
+        return new LonApiParameter(lon);
     }
 
     public static final class IdApiParameter {
@@ -34,6 +40,30 @@ public class ApiParameter {
         @Inject
         public IdApiParameter(@ApiInfo String id) {
             this.id = id;
+        }
+    }
+
+    public static final class LatApiParameter {
+
+        @Expose
+        @SerializedName("lat")
+        private double lat;
+
+        @Inject
+        public LatApiParameter(@ApiInfo double lat) {
+            this.lat = lat;
+        }
+    }
+
+    public static final class LonApiParameter {
+
+        @Expose
+        @SerializedName("lon")
+        private double lon;
+
+        @Inject
+        public LonApiParameter(@ApiInfo double lon) {
+            this.lon = lon;
         }
     }
 }

@@ -12,4 +12,6 @@ import com.weather.isaiahj.androidweather.ui.base.MvpPresenter;
 public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V> {
 
     void onViewInitialized();
+
+    void onLocationReceived(double lat, double lon);
 }
