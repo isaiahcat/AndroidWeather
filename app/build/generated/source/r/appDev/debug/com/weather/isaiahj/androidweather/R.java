@@ -3600,8 +3600,12 @@ public final class R {
     public static final int status_bar_notification_info_overflow=0x7f0c0051;
     public static final int submit=0x7f0c0052;
     public static final int title=0x7f0c0053;
-    public static final int unable_to_load_weather_data_please_try_again=0x7f0c0054;
-    public static final int version=0x7f0c0055;
+    public static final int transition_card=0x7f0c0054;
+    public static final int transition_location=0x7f0c0055;
+    public static final int transition_temperature=0x7f0c0056;
+    public static final int transition_weather=0x7f0c0057;
+    public static final int unable_to_load_weather_data_please_try_again=0x7f0c0058;
+    public static final int version=0x7f0c0059;
   }
   public static final class style {
     public static final int AlertDialog_AppCompat=0x7f0d0000;

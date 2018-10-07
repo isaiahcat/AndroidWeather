@@ -2,6 +2,8 @@ package com.weather.isaiahj.androidweather.ui.main.weatherlist;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,8 +17,6 @@ import com.weather.isaiahj.androidweather.data.network.model.currentweather.Curr
 import com.weather.isaiahj.androidweather.di.component.ActivityComponent;
 import com.weather.isaiahj.androidweather.ui.base.BaseFragment;
 import com.weather.isaiahj.androidweather.ui.main.MainActivity;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -84,9 +84,11 @@ public class WeatherListFragment extends BaseFragment implements
     }
 
     @Override
-    public void onWeatherListItemClick(CurrentWeather currentWeather) {
+    public void onWeatherListItemClick(CurrentWeather currentWeather, Pair<View, String>... sharedElements) {
         if (mMainActivity != null) {
-            mMainActivity.openWeatherDetailActivity(currentWeather);
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    mMainActivity, sharedElements);
+            mMainActivity.openWeatherDetailActivity(currentWeather, options.toBundle());
         }
     }
 

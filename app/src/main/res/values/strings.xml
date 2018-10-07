@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">WeatherApp</string>
 
+    <!--shared element transitions-->
+    <string name="transition_card">transition_card</string>
+    <string name="transition_location">transition_location</string>
+    <string name="transition_weather">transition_weather</string>
+    <string name="transition_temperature">transition_temperature</string>
+
     <!--Toolbar menus-->
     <string name="clear">Clear</string>
     <string name="cut">Cut</string>

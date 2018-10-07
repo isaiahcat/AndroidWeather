@@ -123,8 +123,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     @Override
-    public void openWeatherDetailActivity(CurrentWeather currentWeather) {
+    public void openWeatherDetailActivity(CurrentWeather currentWeather, Bundle sharedElementBundle) {
         startActivity(WeatherDetailActivity.getStartIntentWithParcelableExtra(
-                MainActivity.this, currentWeather));
+                MainActivity.this, currentWeather), sharedElementBundle);
     }
 }

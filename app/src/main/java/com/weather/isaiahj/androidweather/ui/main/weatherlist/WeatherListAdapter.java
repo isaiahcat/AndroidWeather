@@ -1,5 +1,6 @@
 package com.weather.isaiahj.androidweather.ui.main.weatherlist;
 
+import android.support.v4.util.Pair;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import com.weather.isaiahj.androidweather.data.network.model.BulkCurrentWeather;
 import com.weather.isaiahj.androidweather.data.network.model.currentweather.CurrentWeather;
 import com.weather.isaiahj.androidweather.ui.base.BaseViewHolder;
 import com.weather.isaiahj.androidweather.utils.AppLogger;
+import com.weather.isaiahj.androidweather.utils.StringUtils;
+import com.weather.isaiahj.androidweather.utils.ViewUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -74,7 +77,7 @@ public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     }
 
     public interface Callback {
-        void onWeatherListItemClick(CurrentWeather currentWeather);
+        void onWeatherListItemClick(CurrentWeather currentWeather, Pair<View, String>... sharedElements);
 
         void onWeatherListEmptyViewRetryClick();
     }
@@ -116,18 +119,22 @@ public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
                 final CurrentWeather currentWeather = mBulkCurrentWeather.getList().get(position);
 
-                locationTextView.setText(String.format("%s, %s", currentWeather.getName(),
-                        currentWeather.getSys().getCountry()));
+                locationTextView.setText(StringUtils.getFormattedWeatherLocation(currentWeather));
 
-                weatherTextView.setText(currentWeather.getWeather().get(0).getDescription());
+                weatherTextView.setText(StringUtils.getFormattedWeatherDescription(currentWeather));
 
-                temperatureTextView.setText(String.format("%s \u00B0C",
-                        currentWeather.getMain().getTemp()));
+                temperatureTextView.setText(StringUtils.getFormattedWeatherTemperature(currentWeather));
 
                 cardView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (mCallback != null) mCallback.onWeatherListItemClick(currentWeather);
+                        if (mCallback != null) {
+                            mCallback.onWeatherListItemClick(currentWeather,
+                                    ViewUtils.getSharedElementPair(cardView),
+                                    ViewUtils.getSharedElementPair(locationTextView),
+                                    ViewUtils.getSharedElementPair(weatherTextView),
+                                    ViewUtils.getSharedElementPair(temperatureTextView));
+                        }
                     }
                 });
 

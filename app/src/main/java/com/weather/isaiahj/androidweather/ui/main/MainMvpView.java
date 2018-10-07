@@ -1,5 +1,7 @@
 package com.weather.isaiahj.androidweather.ui.main;
 
+import android.os.Bundle;
+
 import com.weather.isaiahj.androidweather.data.db.model.Question;
 import com.weather.isaiahj.androidweather.data.network.model.currentweather.CurrentWeather;
 import com.weather.isaiahj.androidweather.ui.base.MvpView;
@@ -16,6 +18,6 @@ public interface MainMvpView extends MvpView {
 
     void reloadWeatherList(List<Question> questionList);
 
-    void openWeatherDetailActivity(CurrentWeather currentWeather);
+    void openWeatherDetailActivity(CurrentWeather currentWeather, Bundle sharedElementBundle);
 
 }

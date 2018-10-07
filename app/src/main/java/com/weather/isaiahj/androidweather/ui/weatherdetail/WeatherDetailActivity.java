@@ -4,13 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.widget.TextView;
 
 import com.weather.isaiahj.androidweather.R;
 import com.weather.isaiahj.androidweather.data.network.model.currentweather.CurrentWeather;
 import com.weather.isaiahj.androidweather.ui.base.BaseActivity;
+import com.weather.isaiahj.androidweather.utils.StringUtils;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -23,6 +26,15 @@ public class WeatherDetailActivity extends BaseActivity implements WeatherDetail
 
     @Inject
     WeatherDetailMvpPresenter<WeatherDetailMvpView> mPresenter;
+
+    @BindView(R.id.location_text_view)
+    TextView mLocationTextView;
+
+    @BindView(R.id.weather_text_view)
+    TextView mWeatherTextView;
+
+    @BindView(R.id.temperature_text_view)
+    TextView mTemperatureTextView;
 
     private CurrentWeather mCurrentWeather;
 
@@ -47,6 +59,12 @@ public class WeatherDetailActivity extends BaseActivity implements WeatherDetail
     @Override
     protected void setUp() {
         mCurrentWeather = getIntent().getParcelableExtra(EXTRA_PARCELABLE);
+
+        mLocationTextView.setText(StringUtils.getFormattedWeatherLocation(mCurrentWeather));
+
+        mWeatherTextView.setText(StringUtils.getFormattedWeatherDescription(mCurrentWeather));
+
+        mTemperatureTextView.setText(StringUtils.getFormattedWeatherTemperature(mCurrentWeather));
     }
 
     @Override

@@ -5,6 +5,8 @@ import android.content.res.Resources;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.util.Pair;
+import android.view.View;
 
 import com.weather.isaiahj.androidweather.R;
 
@@ -34,5 +36,9 @@ public final class ViewUtils {
             drawable.setColorFilter(ContextCompat
                     .getColor(context, R.color.dark_gray), PorterDuff.Mode.SRC_ATOP);
         }
+    }
+
+    public static Pair<View, String> getSharedElementPair(View view) {
+        return Pair.create(view, view.getTransitionName());
     }
 }

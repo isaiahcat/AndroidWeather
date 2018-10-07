@@ -1194,8 +1194,12 @@ int string some_error 0x7f0c0050
 int string status_bar_notification_info_overflow 0x7f0c0051
 int string submit 0x7f0c0052
 int string title 0x7f0c0053
-int string unable_to_load_weather_data_please_try_again 0x7f0c0054
-int string version 0x7f0c0055
+int string transition_card 0x7f0c0054
+int string transition_location 0x7f0c0055
+int string transition_temperature 0x7f0c0056
+int string transition_weather 0x7f0c0057
+int string unable_to_load_weather_data_please_try_again 0x7f0c0058
+int string version 0x7f0c0059
 int style AlertDialog_AppCompat 0x7f0d0000
 int style AlertDialog_AppCompat_Light 0x7f0d0001
 int style Animation_AppCompat_Dialog 0x7f0d0002
