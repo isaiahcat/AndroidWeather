@@ -17,6 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="3e28b65a5d4e47c69f6ec5b1a318261b18e41eba" />
+
         <activity
             android:name="com.weather.isaiahj.androidweather.ui.splash.SplashActivity"
             android:launchMode="singleTop"

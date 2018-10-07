@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.interceptors.HttpLoggingInterceptor.Level;
+import com.crashlytics.android.Crashlytics;
 import com.weather.isaiahj.androidweather.data.DataManager;
 import com.weather.isaiahj.androidweather.di.component.ApplicationComponent;
 import com.weather.isaiahj.androidweather.di.component.DaggerApplicationComponent;
@@ -12,6 +13,7 @@ import com.weather.isaiahj.androidweather.utils.AppLogger;
 
 import javax.inject.Inject;
 
+import io.fabric.sdk.android.Fabric;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 
@@ -44,6 +46,8 @@ public class WeatherApp extends Application {
         if (BuildConfig.DEBUG) {
             AndroidNetworking.enableLogging(Level.BODY);
         }
+
+        Fabric.with(this, new Crashlytics());
 
         CalligraphyConfig.initDefault(mCalligraphyConfig);
     }
