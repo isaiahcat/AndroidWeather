@@ -1,19 +1,12 @@
 # Android Weather: Sample App
 
 <p align="center">
-  <img src="https://janishar.github.io/images/mvp-app-pics/mvp-login.png" width="250">
-  <img src="https://janishar.github.io/images/mvp-app-pics/main-view.png" width="250">
-  <img src="https://janishar.github.io/gifs/mvp-app.gif" width="250">
+  <img src="https://ijbcatimpo.github.com/images/splash_prod.jpg" width="200">
+  <img src="https://ijbcatimpo.github.com/images/splash_dev.jpg" width="200">
+  <img src="https://ijbcatimpo.github.com/images/weather_list.jpg" width="200">
+  <img src="https://ijbcatimpo.github.com/images/location_permission.jpg" width="200">
+  <img src="https://ijbcatimpo.github.com/images/weather_detail.jpg" width="200">
 </p>
-<br>
-<p align="center">
-  <img src="https://janishar.github.io/images/mvp-app-pics/mvp-drawer.png" width="200">
-  <img src="https://janishar.github.io/images/mvp-app-pics/mvp-rating.png" width="200">
-  <img src="https://janishar.github.io/images/mvp-app-pics/mvp-feed.png" width="200">
-  <img src="https://janishar.github.io/images/mvp-app-pics/mvp-empty-state.png" width="200">
-</p>
-<br>
-<br>
 
 ### Overview
 Application shows weather information from [OpenWeatherMap](https://openweathermap.org/api)
@@ -41,7 +34,7 @@ Additional Notes
 - Used Git and GitHub for version control
 - Analytics with Fabric.io Crashlytics
 - With some unit testing based on MVP boilerplate
-- Support both tablet and phone
+- Supports both tablet and phone
 
 ### Architecture and Boilerplate reference:
 Mindorks MVP Boilerplate: https://github.com/MindorksOpenSource/android-mvp-architecture
