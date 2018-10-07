@@ -49,17 +49,23 @@ public class CurrentWeather implements Parcelable {
     private Integer cod;
 
     protected CurrentWeather(Parcel in) {
+        coord = in.readParcelable(Coord.class.getClassLoader());
+        weather = in.createTypedArrayList(Weather.CREATOR);
         base = in.readString();
+        main = in.readParcelable(Main.class.getClassLoader());
         if (in.readByte() == 0) {
             visibility = null;
         } else {
             visibility = in.readInt();
         }
+        wind = in.readParcelable(Wind.class.getClassLoader());
+        clouds = in.readParcelable(Clouds.class.getClassLoader());
         if (in.readByte() == 0) {
             dt = null;
         } else {
             dt = in.readInt();
         }
+        sys = in.readParcelable(Sys.class.getClassLoader());
         if (in.readByte() == 0) {
             id = null;
         } else {
@@ -75,19 +81,25 @@ public class CurrentWeather implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(coord, flags);
+        dest.writeTypedList(weather);
         dest.writeString(base);
+        dest.writeParcelable(main, flags);
         if (visibility == null) {
             dest.writeByte((byte) 0);
         } else {
             dest.writeByte((byte) 1);
             dest.writeInt(visibility);
         }
+        dest.writeParcelable(wind, flags);
+        dest.writeParcelable(clouds, flags);
         if (dt == null) {
             dest.writeByte((byte) 0);
         } else {
             dest.writeByte((byte) 1);
             dest.writeInt(dt);
         }
+        dest.writeParcelable(sys, flags);
         if (id == null) {
             dest.writeByte((byte) 0);
         } else {
