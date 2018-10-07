@@ -1,11 +1,15 @@
 
 package com.weather.isaiahj.androidweather.data.network.model.currentweather;
 
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class CurrentWeather {
+import java.util.List;
+
+public class CurrentWeather implements Parcelable {
 
     @SerializedName("coord")
     @Expose
@@ -43,6 +47,78 @@ public class CurrentWeather {
     @SerializedName("cod")
     @Expose
     private Integer cod;
+
+    protected CurrentWeather(Parcel in) {
+        base = in.readString();
+        if (in.readByte() == 0) {
+            visibility = null;
+        } else {
+            visibility = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            dt = null;
+        } else {
+            dt = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readInt();
+        }
+        name = in.readString();
+        if (in.readByte() == 0) {
+            cod = null;
+        } else {
+            cod = in.readInt();
+        }
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(base);
+        if (visibility == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(visibility);
+        }
+        if (dt == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(dt);
+        }
+        if (id == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(id);
+        }
+        dest.writeString(name);
+        if (cod == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(cod);
+        }
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<CurrentWeather> CREATOR = new Creator<CurrentWeather>() {
+        @Override
+        public CurrentWeather createFromParcel(Parcel in) {
+            return new CurrentWeather(in);
+        }
+
+        @Override
+        public CurrentWeather[] newArray(int size) {
+            return new CurrentWeather[size];
+        }
+    };
 
     public Coord getCoord() {
         return coord;
