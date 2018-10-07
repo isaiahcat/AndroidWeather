@@ -30,16 +30,30 @@ android {
     flavorDimensions "default"
 
     productFlavors {
-        appProduction {
+        production {
             buildConfigField("String", "API_KEY", "\"ac881b0a54b6b5ef4caafc2b02b65524\"")
         }
 
-        appDev {
+        dev {
             buildConfigField("String", "API_KEY", "\"fd658f8730fe62c0e07d38dcfd23aac0\"")
         }
 
         appTest {
             buildConfigField("String", "API_KEY", "\"620126271db8fa942c2e5fd740114257\"")
+        }
+    }
+
+    sourceSets {
+        production {
+            res.srcDirs = ['src/production/res', 'src/main/res']
+        }
+
+        dev {
+            res.srcDirs = ['src/dev/res', 'src/main/res']
+        }
+
+        appTest {
+            res.srcDirs = ['src/dev/res', 'src/main/res']
         }
     }
 }
