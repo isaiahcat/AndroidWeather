@@ -56,6 +56,8 @@ public class WeatherDetailActivity extends BaseActivity implements WeatherDetail
     @BindView(R.id.details_text_view)
     TextView mDetailsTextView;
 
+    private Drawable mRefreshIcon;
+
     private CurrentWeather mCurrentWeather;
 
     public static Intent getStartIntentWithParcelableExtra(Context context, Parcelable parcelable) {
@@ -80,7 +82,15 @@ public class WeatherDetailActivity extends BaseActivity implements WeatherDetail
     protected void setUp() {
         setSupportActionBar(mToolbar);
 
-        mCurrentWeather = getIntent().getParcelableExtra(EXTRA_PARCELABLE);
+        updateWeatherDetails((CurrentWeather) getIntent().getParcelableExtra(EXTRA_PARCELABLE));
+    }
+
+
+    @Override
+    public void updateWeatherDetails(CurrentWeather currentWeather) {
+        if (mRefreshIcon instanceof Animatable) ((Animatable) mRefreshIcon).stop();
+
+        mCurrentWeather = currentWeather;
 
         mLocationTextView.setText(StringUtils.getFormattedWeatherLocation(mCurrentWeather));
 
@@ -113,6 +123,8 @@ public class WeatherDetailActivity extends BaseActivity implements WeatherDetail
             case R.id.action_settings:
                 return true;
             case R.id.action_refresh:
+                mRefreshIcon = drawable;
+                mPresenter.onViewRefreshed(mCurrentWeather.getId().toString());
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

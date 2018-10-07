@@ -7,6 +7,7 @@ import com.weather.isaiahj.androidweather.ui.base.MvpView;
  * Created by isaiahj on 07/10/2018.
  */
 
-public interface WeatherDetailMvpPresenter<V extends MvpView> extends MvpPresenter<V> {
+public interface WeatherDetailMvpPresenter<V extends WeatherDetailMvpView> extends MvpPresenter<V> {
 
+    void onViewRefreshed(String cityId);
 }
