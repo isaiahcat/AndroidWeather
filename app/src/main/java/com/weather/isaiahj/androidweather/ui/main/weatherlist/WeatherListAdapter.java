@@ -25,11 +25,12 @@ import io.reactivex.annotations.Nullable;
 
 public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
-    public static final int VIEW_TYPE_EMPTY = 0;
-    public static final int VIEW_TYPE_NORMAL = 1;
+    private static final int VIEW_TYPE_EMPTY = 0;
+    private static final int VIEW_TYPE_NORMAL = 1;
 
     private Callback mCallback;
     private BulkCurrentWeather mBulkCurrentWeather;
+    private boolean mIsInitialLoad = true;
 
     public WeatherListAdapter(BulkCurrentWeather bulkCurrentWeather) {
         mBulkCurrentWeather = bulkCurrentWeather;
@@ -58,21 +59,23 @@ public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        return hasItems() ? VIEW_TYPE_NORMAL : VIEW_TYPE_EMPTY;
+        return mIsInitialLoad || hasItems() ? VIEW_TYPE_NORMAL : VIEW_TYPE_EMPTY;
     }
 
     @Override
     public int getItemCount() {
-        return hasItems() ? mBulkCurrentWeather.getList().size() : 1;
+        return hasItems() ? mBulkCurrentWeather.getList().size() : mIsInitialLoad ? 3 : 1;
     }
 
     public void addItems(BulkCurrentWeather weatherList) {
+        mIsInitialLoad = false;
         mBulkCurrentWeather = weatherList;
         notifyDataSetChanged();
     }
 
     public interface Callback {
         void onWeatherListItemClick(CurrentWeather currentWeather);
+
         void onWeatherListEmptyViewRetryClick();
     }
 
@@ -124,7 +127,7 @@ public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 cardView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mCallback.onWeatherListItemClick(currentWeather);
+                        if (mCallback != null) mCallback.onWeatherListItemClick(currentWeather);
                     }
                 });
 
@@ -156,8 +159,7 @@ public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
         @OnClick(R.id.btn_retry)
         void onRetryClick() {
-            if (mCallback != null)
-                mCallback.onWeatherListEmptyViewRetryClick();
+            if (mCallback != null) mCallback.onWeatherListEmptyViewRetryClick();
         }
     }
 }

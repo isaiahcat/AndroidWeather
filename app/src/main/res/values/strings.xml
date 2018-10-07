@@ -1,5 +1,3 @@
-
-
 <resources>
     <string name="app_name">WeatherApp</string>
 
@@ -68,8 +66,8 @@
     <string name="blog">Blog</string>
 
     <!--empty state-->
-    <string name="empty_screen">We do not have anything\nhere right now.</string>
-    <string name="please_retry">Please Retry</string>
     <string name="retry">Retry</string>
+    <string name="oops">Oops!</string>
+    <string name="unable_to_load_weather_data_please_try_again">Unable to load weather data.\nPlease try again.</string>
 
 </resources>
