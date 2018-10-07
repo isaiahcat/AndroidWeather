@@ -1,10 +1,14 @@
 package com.weather.isaiahj.androidweather.ui.main.weatherlist;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -29,8 +33,7 @@ import butterknife.ButterKnife;
  * Created by isaiahj on 07/10/2018.
  */
 
-public class WeatherListFragment extends BaseFragment implements
-        WeatherListMvpView, WeatherListAdapter.Callback {
+public class WeatherListFragment extends BaseFragment implements WeatherListMvpView, WeatherListAdapter.Callback {
 
     public static final String TAG = "WeatherListFragment";
 
@@ -87,9 +90,16 @@ public class WeatherListFragment extends BaseFragment implements
         mPresenter.onViewPrepared();
     }
 
+    @SafeVarargs
     @Override
-    public void onWeatherListItemClick(CurrentWeather currentWeather, Pair<View, String>... sharedElements) {
+    public final void onWeatherListItemClick(CurrentWeather currentWeather, Pair<View, String>... sharedElements) {
         if (mMainActivity != null) {
+
+            if (currentWeather == null) {
+                mMainActivity.addCurrentLocation();
+                return;
+            }
+
             ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                     mMainActivity, sharedElements);
             mMainActivity.openWeatherDetailActivity(currentWeather, options.toBundle());

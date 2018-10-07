@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.weather.isaiahj.androidweather.R;
 import com.weather.isaiahj.androidweather.data.network.ApiEndPoint;
 import com.weather.isaiahj.androidweather.data.network.model.currentweather.CurrentWeather;
@@ -103,6 +104,7 @@ public class WeatherDetailActivity extends BaseActivity implements WeatherDetail
         Glide.with(WeatherDetailActivity.this)
                 .load(ApiEndPoint.getEndpointForWeatherIcons(mCurrentWeather))
                 .fitCenter()
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(mIconImageView);
     }
 

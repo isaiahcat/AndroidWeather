@@ -14,6 +14,7 @@
     <string name="development">Development</string>
 
     <!--app Message-->
+    <string name="required_location">Location is required for this feature.</string>
     <string name="api_retry_error">Please retry!</string>
     <string name="api_default_error">Something wrong happened!</string>
     <string name="some_error">Some Error Occurred!</string>
@@ -23,5 +24,6 @@
     <string name="retry">Retry</string>
     <string name="oops">Oops!</string>
     <string name="unable_to_load_weather_data_please_try_again">Unable to load weather data.\nPlease try again.</string>
+    <string name="click_here_to_add_current_location">Click here to add current location</string>
 
 </resources>

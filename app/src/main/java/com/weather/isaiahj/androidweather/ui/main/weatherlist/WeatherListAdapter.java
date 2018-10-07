@@ -31,6 +31,9 @@ public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     private static final int VIEW_TYPE_EMPTY = 0;
     private static final int VIEW_TYPE_NORMAL = 1;
 
+    private static final int ITEM_COUNT_FILLED = 4;
+    private static final int ITEM_COUNT_EMPTY = 1;
+
     private Callback mCallback;
     private BulkCurrentWeather mBulkCurrentWeather;
     private boolean mIsInitialLoad = true;
@@ -67,7 +70,7 @@ public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     @Override
     public int getItemCount() {
-        return hasItems() ? mBulkCurrentWeather.getList().size() : mIsInitialLoad ? 3 : 1;
+        return hasItems() ? ITEM_COUNT_FILLED : ITEM_COUNT_EMPTY;
     }
 
     public void addItems(BulkCurrentWeather weatherList) {
@@ -115,6 +118,8 @@ public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         public void onBind(int position) {
             super.onBind(position);
 
+            if (mBulkCurrentWeather == null) return;
+
             try {
 
                 final CurrentWeather currentWeather = mBulkCurrentWeather.getList().get(position);
@@ -133,6 +138,19 @@ public class WeatherListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                                     ViewUtils.getSharedElementPair(locationTextView),
                                     ViewUtils.getSharedElementPair(weatherTextView),
                                     ViewUtils.getSharedElementPair(temperatureTextView));
+                        }
+                    }
+                });
+
+            } catch (IndexOutOfBoundsException exception) {
+
+                locationTextView.setText(R.string.click_here_to_add_current_location);
+
+                cardView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (mCallback != null) {
+                            mCallback.onWeatherListItemClick(null);
                         }
                     }
                 });

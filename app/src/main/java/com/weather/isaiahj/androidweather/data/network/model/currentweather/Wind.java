@@ -14,7 +14,7 @@ public class Wind implements Parcelable {
     private Double speed;
     @SerializedName("deg")
     @Expose
-    private Integer deg;
+    private Double deg;
 
     protected Wind(Parcel in) {
         if (in.readByte() == 0) {
@@ -25,7 +25,7 @@ public class Wind implements Parcelable {
         if (in.readByte() == 0) {
             deg = null;
         } else {
-            deg = in.readInt();
+            deg = in.readDouble();
         }
     }
 
@@ -41,7 +41,7 @@ public class Wind implements Parcelable {
             dest.writeByte((byte) 0);
         } else {
             dest.writeByte((byte) 1);
-            dest.writeInt(deg);
+            dest.writeDouble(deg);
         }
     }
 
@@ -70,11 +70,11 @@ public class Wind implements Parcelable {
         this.speed = speed;
     }
 
-    public Integer getDeg() {
+    public Double getDeg() {
         return deg;
     }
 
-    public void setDeg(Integer deg) {
+    public void setDeg(Double deg) {
         this.deg = deg;
     }
 

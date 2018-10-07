@@ -14,6 +14,8 @@ import java.util.List;
 
 public interface MainMvpView extends MvpView {
 
+    void addCurrentLocation();
+
     void refreshWeatherList(List<Question> questionList);
 
     void reloadWeatherList(List<Question> questionList);
