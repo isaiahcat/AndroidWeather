@@ -35,6 +35,7 @@ Additional Notes
 - Analytics with Fabric.io Crashlytics
 - With some unit testing based on MVP boilerplate
 - Supports both tablet and phone
+- Has three build variants (production, dev, appTest)
 
 ### Architecture and Boilerplate reference:
 Mindorks MVP Boilerplate: https://github.com/MindorksOpenSource/android-mvp-architecture
