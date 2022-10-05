@@ -55,7 +55,7 @@ Mindorks MVP Boilerplate: https://github.com/MindorksOpenSource/android-mvp-arch
 
 ### License
 ```
-   Copyright (C) 2018 ISAIAH JOSEPHINE CATIMPO
+   Copyright (C) 2018
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
